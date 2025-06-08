@@ -1,4 +1,4 @@
-# The Scorched Analysis
+# Card Sorting in the Classroom
 
 Software to parse MoodleXML, student Moodle responses, and generate completions
 for cardsort, refute, and reverse tracing questions.
