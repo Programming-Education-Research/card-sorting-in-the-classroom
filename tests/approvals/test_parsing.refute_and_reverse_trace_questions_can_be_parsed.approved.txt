@@ -1,0 +1,64 @@
+[Refute(name='refute: bring umbrella',
+        prompt='Your classmate wrote the following function that takes three boolean \r\n'
+               'variables to help them decide whether they should take an umbrella with \r\n'
+               'them:\n'
+               '\n'
+               'def take_umbrella(is_cloudy, is_raining, going_out):\r\n'
+               '    if is_cloudy or is_raining and going_out:\r\n'
+               '        return "Take an umbrella"\r\n'
+               '    else:\r\n'
+               '        return "Don\'t take an umbrella"\n'
+               '\n'
+               '\n'
+               'Your classmate will bring an umbrella with them if:\n'
+               '\n'
+               'It is cloudy, or it is raining\n'
+               'But only if they are going out for the day\n'
+               '\n'
+               'In all other cases, they will not take an umbrella with them.\n'
+               '\n'
+               'There is a bug in their code – write a test case that reveals the bug. Remember to include quote marks around any strings.',
+        preload='Calling `take_umbrella({[24]})`\nShould return: {[25]}\nBut the above function actually returns: {[25]}',
+        test='def buggy(is_cloudy, is_raining, going_out):\n'
+             '    if is_cloudy or is_raining and going_out:\n'
+             '        return "Take an umbrella"\n'
+             '    else:\n'
+             '        return "Don\'t take an umbrella"\n'
+             '\n'
+             'def correct(is_cloudy, is_raining, going_out):\n'
+             '    if (is_cloudy or is_raining) and going_out:\n'
+             '        return "Take an umbrella"\n'
+             '    else:\n'
+             '        return "Don\'t take an umbrella"\n'
+             '\n'
+             'assert correct({[given]}).lower() == {[then]}.lower()\n'
+             'assert buggy({[given]}).lower() == {[but]}.lower()'),
+ Refute(name='refute: no pairs over 5',
+        prompt='A classmate has written the following function:\n'
+               '\n'
+               'def no_large_pairs(data):\r\n'
+               '    for i in range(len(data)):\r\n'
+               '        if data[i - 1] + data[i] > 5:\r\n'
+               '            return False\r\n'
+               '    return True\n'
+               '\n'
+               'They claim the function returns True if there is no adjacent pair of numbers that sum to a value greater than five, and False otherwise.There is a bug in their code – write a test case that reveals the bug.',
+        preload='Calling no_large_pairs({[16]})\nShould return: {[8]}\nBut the above function actually returns: {[8]}',
+        test='def buggy(data):\n'
+             '    for i in range(len(data)):\n'
+             '        if data[i - 1] + data[i] > 5:\n'
+             '            return False\n'
+             '    return True\n'
+             '\n'
+             'def correct(data):\n'
+             '    for i in range(len(data) - 1):\n'
+             '        if data[i] + data[i + 1] > 5:\n'
+             '            return False\n'
+             '    return True\n'
+             '\n'
+             'assert correct({[given]}) == {[then]}\n'
+             'assert buggy({[given]}) == {[but]}'),
+ ReverseTrace(name='Reverse Trace: flip evens in list',
+              prompt='Complete the following code to get the expected output in the example box below.',
+              preload='def munge(data):\n    for i in range(len(data) // 2):\n        if i % 2 == 0:\n            data[i], data[-i - 1] = data[-i - 1], data[i]\n\n\ndata = {[45]}\nmunge(data)\nprint(data)',
+              expect="['a', 'b', 'c', 'd', 'e', 'f', 'g']")]

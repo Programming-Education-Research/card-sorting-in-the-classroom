@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Default for James' Testing</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Default for James' Testing/Comparing Card Sorting and Reading</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 680036  -->
+  <question type="coderunner">
+    <name>
+      <text>PROTOTYPE_python_refute</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">This is the Refute template.</p>
+<p dir="ltr" style="text-align: left;">Global extra expects a gapfiller template with exactly three fields for `given`, `then`, `but` test cases respectively. For example:</p>
+<p><code></code></p>
+<pre><code>Calling no_even_pairs({[16]})
+Should return: `{[8]}`
+But the above function actually returns: `{[8]}`</code></pre>
+<p>Test cases expects exactly one test case in the first slot, with `{[given]}`, `{[then]}`, `{[but]}` replacement fields. For example:</p>
+<p><code></code></p>
+<pre><code>def buggy(data):
+	for i in range(len(data) - 1):
+		if (data[i - 1] + data[i]) % 2 == 0:
+			return False
+	return True
+
+def correct(data):
+	for i in range(len(data) - 1):
+		if (data[i] + data[i + 1]) % 2 == 0:
+			return False
+	return True
+
+assert correct({[given]}) == {[then]}
+assert buggy({[given]}) == {[but]}</code></pre>
+<p>These fields are filled with the values the students type in, and the test case is then executed. If the test case exits without error, the case is correct. Otherwise, the question is incorrect with a message indicating the error. If an assertion error is raised, the student is informed that their cases are incorrect. Otherwise, they are told there was an error.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python_refute</coderunnertype>
+    <prototypetype>2</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>3</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>Calling no_even_pairs({[16]})
+Should return: `{[8]}`
+But the above function actually returns: `{[8]}`</globalextra>
+    <useace>1</useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[import json
+import sys
+from random import choices
+from string import ascii_uppercase, digits
+from subprocess import check_output, STDOUT, CalledProcessError
+
+
+RAW_TESTCASES = json.loads("""{{ TESTCASES | json_encode | e('py') }}""")
+RAW_ANSWER = json.loads("""{{ STUDENT_ANSWER | e('py') }}""")
+RAW_PARAMS = json.loads("""{{ QUESTION.parameters | json_encode | e('py') }}""")
+
+
+class TestCase:
+    def __init__(self, code: str, given, then, but):
+        self.secret = ''.join(choices(ascii_uppercase + digits, k=32))
+        self.code = (
+                code
+                .replace("{[given]}", given)
+                .replace("{[then]}", then)
+                .replace("{[but]}", but)
+                + f"""\n\n\nprint("{self.secret}", end='')"""
+        )
+
+    def run_raw(self):
+        with open("prog.py", "w") as src:
+            print(test.code, file=src)
+        try:
+            cmd = ["python3", "prog.py"]
+            output = check_output(cmd, stderr=STDOUT, universal_newlines=True)
+        except CalledProcessError as e:
+            return 1, e.output
+        else:
+            return 0, output
+
+    def run(self):
+        status, output = self.run_raw()
+        if status == 1 and output and output.strip().endswith("AssertionError"):
+            return "AssertionError"
+        elif status == 1 or not output.strip().endswith(test.secret):
+            return "RuntimeError"
+        else:
+            return "Success"
+
+
+def dump_output_and_quit(correct: bool, epilogue: str = "", exit_code: int = 0):
+    banner = f"<h3>{'Success!' if correct else 'Incorrect'}</h3>"
+    print(json.dumps({
+        'fraction': int(correct),
+        'testresults': [],
+        'epiloguehtml': banner + epilogue,
+        'columnformats': [],
+        'showdifferences': False
+    }))
+    sys.exit(exit_code)
+
+
+given, then, but = RAW_ANSWER
+test = TestCase(RAW_TESTCASES[0]["testcode"], given, then, but)
+
+if then.strip() == but.strip():
+    dump_output_and_quit(
+        False,
+        "The expected and actual cases need to be different to reveal any bugs",
+    )
+
+match test.run():
+    case "AssertionError":
+        dump_output_and_quit(False, "Your given or example cases are incorrect")
+    case "RuntimeError":
+        dump_output_and_quit(False, "Your test case has caused an error", 1)
+    case "Success":
+        dump_output_and_quit(True)
+]]></template>
+    <iscombinatortemplate>1</iscombinatortemplate>
+    <allowmultiplestdins>0</allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre><![CDATA[|#<ab@17943918#@>#\n|ms]]></testsplitterre>
+    <language>python3</language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader>TemplateGrader</grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin>gapfiller</uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Default for James' Testing/Comparing Card Sorting and Reading/Refute</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 680044  -->
+  <question type="coderunner">
+    <name>
+      <text>refute: bring umbrella</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Your classmate wrote the following function that takes three boolean 
+variables to help them decide whether they should take an umbrella with 
+them:</p>
+<blockquote>
+    <pre>def take_umbrella(is_cloudy, is_raining, going_out):
+    if is_cloudy or is_raining and going_out:
+        return "Take an umbrella"
+    else:
+        return "Don't take an umbrella"</pre>
+</blockquote>
+<p></p>
+<p>Your classmate will bring an umbrella with them if:<br></p>
+<ul>
+    <li>It is cloudy, or it is raining<br></li>
+    <li>But only if they are going out for the day<br></li>
+</ul>
+<p>In all other cases, they will not take an umbrella with them.</p>
+<p></p>
+<p>There is a bug in their code – write a test case that reveals the bug. Remember to include quote marks around any strings.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python_refute</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>3</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>Calling `take_umbrella({[24]})`
+Should return: {[25]}
+But the above function actually returns: {[25]}</globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text><![CDATA[def buggy(is_cloudy, is_raining, going_out):
+    if is_cloudy or is_raining and going_out:
+        return "Take an umbrella"
+    else:
+        return "Don't take an umbrella"
+
+def correct(is_cloudy, is_raining, going_out):
+    if (is_cloudy or is_raining) and going_out:
+        return "Take an umbrella"
+    else:
+        return "Don't take an umbrella"
+
+assert correct({[given]}).lower() == {[then]}.lower()
+assert buggy({[given]}).lower() == {[but]}.lower()]]></text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 680038  -->
+  <question type="coderunner">
+    <name>
+      <text>refute: no pairs over 5</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">A classmate has written the following function:</p>
+<blockquote>
+    <pre>def no_large_pairs(data):
+    for i in range(len(data)):
+        if data[i - 1] + data[i] &gt; 5:
+            return False
+    return True</pre>
+</blockquote>
+<p>They claim the function returns <code>True</code> if there is no adjacent pair of numbers that sum to a value greater than five, and <code>False</code> otherwise.</p><p>There is a bug in their code – write a test case that reveals the bug.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python_refute</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>3</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>Calling no_large_pairs({[16]})
+Should return: {[8]}
+But the above function actually returns: {[8]}</globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text><![CDATA[def buggy(data):
+    for i in range(len(data)):
+        if data[i - 1] + data[i] > 5:
+            return False
+    return True
+
+def correct(data):
+    for i in range(len(data) - 1):
+        if data[i] + data[i + 1] > 5:
+            return False
+    return True
+
+assert correct({[given]}) == {[then]}
+assert buggy({[given]}) == {[but]}]]></text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 0  -->
+  <question type="category">
+    <category>
+      <text>$course$/top/Default for James' Testing/Comparing Card Sorting and Reading/Reverse Trace</text>
+    </category>
+    <info format="moodle_auto_format">
+      <text></text>
+    </info>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 680039  -->
+  <question type="coderunner">
+    <name>
+      <text>Reverse Trace: flip evens in list</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">Complete the following code to get the expected output in the example box below.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3_html_gapfiller-1</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>5</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>def munge(data):
+    for i in range(len(data) // 2):
+        if i % 2 == 0:
+            data[i], data[-i - 1] = data[-i - 1], data[i]
+
+
+data = {[45]}
+munge(data)
+print(data)</globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>['a', 'b', 'c', 'd', 'e', 'f', 'g']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+</quiz>

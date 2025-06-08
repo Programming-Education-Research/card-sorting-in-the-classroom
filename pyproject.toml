@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cardywardy"
+version = "0.0.1"
+description = "card sort, refute, and reverse tracing question analysis"
+license = "AGPL-3.0-or-later"
+
+readme = "README.md"
+requires-python = ">=3.13"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[project.urls]
+repository = "https://github.com/Programming-Education-Research/card-sorting-in-the-classroom"

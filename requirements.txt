@@ -1,0 +1,6 @@
+lxml~=5.4.0
+beautifulsoup4~=4.13.4
+cardy~=0.1.0
+openai~=1.78.0
+python-dotenv~=1.1.0
+ratelimit~=2.2.1
