@@ -25,7 +25,7 @@ def parse(f: IO) -> list[RawQuestion]:
     soup = BeautifulSoup(f, "xml")
     return [
         parse_question(question)
-        for question in soup.findAll("question", type="coderunner")
+        for question in soup.find_all("question", type="coderunner")
         if not question.find("name").text.strip().startswith("PROTOTYPE")
     ]
 
@@ -41,7 +41,7 @@ def parse_question(tag: Tag) -> RawQuestion:
         "preload": tag.find("answerpreload").text.strip(),
         "answer": tag.find("answer").text.strip(),
         "globalextra": tag.find("globalextra").text.strip(),
-        "tests": [parse_test(test) for test in tag.findAll("testcase")]
+        "tests": [parse_test(test) for test in tag.find_all("testcase")]
     }
 
 
