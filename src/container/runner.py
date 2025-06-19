@@ -18,7 +18,7 @@ def run(script: str) -> Result:
         stderr=subprocess.PIPE,
     )
     try:
-        stdout, stderr = process.communicate(input=script.encode(), timeout=5)
+        stdout, stderr = process.communicate(input=script.encode(), timeout=10)
     except subprocess.TimeoutExpired:
         process.kill()
         stdout, stderr = process.communicate()
