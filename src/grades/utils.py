@@ -1,9 +1,11 @@
 from grades.grade import Grade
 
 
-def from_raw(data: dict[str, str | float]):
+def from_raw(course, semester, data: dict[str, str | float]):
     return Grade(
         username=data["username"],
+        course=course,
+        semester=semester,
         grade=calculate_average(data),
         sat_exam="Exam" in data,
     )

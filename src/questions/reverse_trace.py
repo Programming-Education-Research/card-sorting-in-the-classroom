@@ -49,7 +49,7 @@ class ReverseTrace(Question):
           semester: str,
           raw_attempts: list[str],
     ) -> list[Attempt]:
-        attempts = [json.loads(a) for a in raw_attempts]
+        attempts = [loads_or_default(a, [""]) for a in raw_attempts]
         filled = [fill_input(self.preload, *attempt) for attempt in attempts]
         results = container.runner.run_batch(filled)
         return [
@@ -80,3 +80,9 @@ def grade_result(result, expect):
 
 def is_admissible(result):
     return result.status == 0
+
+def loads_or_default(data, default=""):
+    try:
+        return json.loads(data)
+    except json.JSONDecodeError:
+        return default

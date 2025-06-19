@@ -59,7 +59,7 @@ class Refute(Question):
           semester: str,
           raw_attempts: list[str],
     ) -> list[Attempt]:
-        attempts = [json.loads(a) for a in raw_attempts]
+        attempts = [loads_or_default(a, ["", "", ""]) for a in raw_attempts]
         filled = [zip_values(self.test, *attempt) for attempt in attempts]
         results = container.runner.run_batch(filled)
         return [
@@ -70,7 +70,7 @@ class Refute(Question):
                 semester=semester,
                 idx=i,
                 attempt=attempt,
-                grade=grade_result(result),
+                grade=grade_result(attempt, result),
                 is_admissible=is_admissible(result),
                 is_genuine=attempt != ["", "", ""],
                 extra_data={},
@@ -88,8 +88,8 @@ def zip_values(template, given, then, but):
     )
 
 
-def grade_result(result) -> float:
-    if result.status == 0:
+def grade_result(attempt, result) -> float:
+    if result.status == 0 and attempt[1].strip() != attempt[2].strip():
         return 1
     else:
         return 0
@@ -97,3 +97,10 @@ def grade_result(result) -> float:
 
 def is_admissible(result) -> bool:
     return result.status == 0 or "AssertionError" in result.stderr
+
+
+def loads_or_default(data, default=""):
+    try:
+        return json.loads(data)
+    except json.JSONDecodeError:
+        return default

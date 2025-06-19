@@ -9,9 +9,11 @@ from questions.question import Question
 from questions.refute import Refute
 from questions.reverse_trace import ReverseTrace
 
+DB_PATH = "../data/database.db"
+
 question_map: Final[Mapping[
     tuple[str, str, str],
-    Sequence[tuple[type[Question], int, str]]
+    Sequence[tuple[type[Question], int, str]],
 ]] = {
     ("CS101", "SS2025", "Lab02"): [(Cardsort, 14, "Math Expressions")],
     ("CS101", "SS2025", "Lab04"): [(Cardsort, 8, "Boolean Reasoning")],
@@ -42,9 +44,9 @@ question_map: Final[Mapping[
         (Cardsort, 4, "Dicts With Errors"),
     ],
     ("CS130", "S12025", "Lab01"): [
-        (Cardsort, 8, "Dicts With Errors"),
-        (Cardsort, 9, "Dicts"),
-        (Cardsort, 16, "Functional Equivalence"),
+        (Cardsort, 11, "Dicts With Errors"),
+        (Cardsort, 12, "Dicts"),
+        (Cardsort, 20, "Functional Equivalence"),
     ],
     ("CS130", "S12025", "Lab03"): [(Cardsort, 5, "Test Case Match")],
     ("CS130", "S12025", "Lab04"): [(Cardsort, 12, "Identify Exceptions")],
@@ -60,17 +62,28 @@ question_map: Final[Mapping[
 }
 
 
-for (course, semester, lab), questions in question_map.items():
+def process_one_question(course, semester, lab, q_type, number, name):
     file = course + semester[:2] + "_" + lab
     with open(f"../data/raw/{file}.json", "rb") as f:
         responses = moodle.responses.load(f)
-    with database.setup.connection("../data/database.db", (Attempt,)) as con:
-        for (question_type, question_number, question_name) in questions:
-            print(f"Doing: {file} Q{question_number}, `{question_name}`")
-            question_responses = responses[question_number]
-            question = question_type.fetch(con, name=question_name)
-            for username, raw_attempts in question_responses.items():
-                attempts = question.grade_attempts(
-                    username, course, semester, raw_attempts
-                )
-                Attempt.persist(con, *attempts)
+    with database.setup.connection(DB_PATH, (Attempt,)) as con:
+        question = q_type.fetch(con, name=name)
+    for username, raw in responses[number].items():
+        print(file, number, name, username)
+        attempts = question.grade_attempts(username, course, semester, raw)
+        with database.setup.connection(DB_PATH, (Attempt,)) as con:
+            Attempt.persist(con, *attempts)
+
+
+def main():
+    questions = [
+        (course, semester, lab, q_type, number, name)
+        for (course, semester, lab), questions in question_map.items()
+        for (q_type, number, name) in questions
+    ]
+    for question in questions:
+        process_one_question(*question)
+
+
+if __name__ == "__main__":
+    main()
