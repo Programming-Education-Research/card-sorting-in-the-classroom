@@ -3,6 +3,11 @@
 Software to parse MoodleXML, student Moodle responses, and generate completions
 for cardsort, refute, and reverse tracing questions.
 
+See the
+[Coderunner Question Types](https://codeberg.org/CSEd/coderunner-question-types)
+repository in this organisation for more information on card sorting and refute
+questions.
+
 ## Project Structure
 
 The bulk of this repository is a python project to bulk-process Moodle data and
