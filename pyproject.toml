@@ -16,4 +16,4 @@ dynamic = ["dependencies"]
 dependencies = { file = ["requirements.txt"] }
 
 [project.urls]
-repository = "https://github.com/Programming-Education-Research/card-sorting-in-the-classroom"
+repository = "https://codeberg.org/CSEd/CSITC"
