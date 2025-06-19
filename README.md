@@ -13,6 +13,8 @@ database. This Python project can be installed as an editable installation:
 pip install -e .
 ```
 
+Parts of this project require docker to be installed on your machine.
+
 The other component of this project is a series of Python and RMarkdown scripts
 in the `./scripts` directory. The Python scripts in this directory depend on the
 main Python project having been installed.

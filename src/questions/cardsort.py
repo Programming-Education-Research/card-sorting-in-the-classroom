@@ -2,6 +2,9 @@ import json
 from dataclasses import dataclass
 from typing import Self, override, Final
 
+import cardy
+
+from attempts.attempt import Attempt
 from database.orm import field
 from moodle.xml import RawQuestion
 from questions.question import Question
@@ -92,6 +95,33 @@ class Cardsort(Question):
         }
         return json.dumps(groups)
 
+    @override
+    def grade_attempts(
+          self,
+          username: str,
+          course: str,
+          semester: str,
+          raw_attempts: list[str],
+    ) -> list[Attempt]:
+        attempts = [parse_groups(a) for a in raw_attempts]
+        return [
+            Attempt(
+                question=self.name,
+                username=username,
+                course=course,
+                semester=semester,
+                idx=i,
+                attempt=attempt,
+                grade=1 - norm_distance(self.answer, attempt, self.is_ordered),
+                is_admissible=is_admissible(self.answer, attempt),
+                is_genuine=(
+                      norm_distance(self.preload, attempt, self.is_ordered) != 0
+                ),
+                extra_data={"all_moved": len(attempt.get("Cards", set())) == 0},
+            )
+            for i, attempt in enumerate(attempts)
+        ]
+
     def cards(self) -> list[str]:
         return [card for group in self.preload.values() for card in group]
 
@@ -108,3 +138,32 @@ def parse_groups(data: str) -> dict[str, list[str]]:
         group["title"]: [card["prompt"] for card in group["cards"]]
         for group in groups
     }
+
+
+def norm_distance(
+      probe: dict[str, list[str]],
+      sort: dict[str, list[str]],
+      is_ordered: bool,
+) -> float:
+    if is_ordered:
+        probe = {group: set(cards) for group, cards in probe.items()}
+        sort = {group: set(cards) for group, cards in sort.items()}
+        cards = len([c for g in probe.values() for c in g])
+        return sum(
+            len(probe[group] - sort.get(group, set()))
+            for group in probe
+        ) / cards
+    else:
+        return cardy.norm_distance(
+            [set(g) for g in probe.values()],
+            [set(g) for g in sort.values()],
+            num_groups=len(probe)
+        )
+
+
+def is_admissible(answer, sort):
+    return (
+          set(answer) == set(sort)
+          and set(c for g in answer.values() for c in g)
+          == set(c for g in sort.values() for c in g)
+    )

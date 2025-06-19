@@ -1,7 +1,10 @@
+import json
 import re
 from dataclasses import dataclass
 from typing import Self, override
 
+import container.runner
+from attempts.attempt import Attempt
 from moodle.xml import RawQuestion
 from questions.question import Question
 
@@ -47,3 +50,50 @@ class Refute(Question):
     def question(self) -> str:
         parts = re.split(r"\{\s*\[\s*\d+\s*\]\s*\}", self.preload)
         return "???".join(parts)
+
+    @override
+    def grade_attempts(
+          self,
+          username: str,
+          course: str,
+          semester: str,
+          raw_attempts: list[str],
+    ) -> list[Attempt]:
+        attempts = [json.loads(a) for a in raw_attempts]
+        filled = [zip_values(self.test, *attempt) for attempt in attempts]
+        results = container.runner.run_batch(filled)
+        return [
+            Attempt(
+                question=self.name,
+                username=username,
+                course=course,
+                semester=semester,
+                idx=i,
+                attempt=attempt,
+                grade=grade_result(result),
+                is_admissible=is_admissible(result),
+                is_genuine=attempt != ["", "", ""],
+                extra_data={},
+            )
+            for i, (attempt, result) in enumerate(zip(attempts, results))
+        ]
+
+
+def zip_values(template, given, then, but):
+    return (
+        template
+        .replace("{[given]}", given)
+        .replace("{[then]}", then)
+        .replace("{[but]}", but)
+    )
+
+
+def grade_result(result) -> float:
+    if result.status == 0:
+        return 1
+    else:
+        return 0
+
+
+def is_admissible(result) -> bool:
+    return result.status == 0 or "AssertionError" in result.stderr

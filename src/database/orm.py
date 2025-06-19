@@ -120,7 +120,7 @@ class SimpleOrm(abc.ABC):
     def fetch(cls, con: Connection, name: str):
         with cursor(con) as cur:
             cur.execute(
-                f"SELECT * FROM {cls.table_name()} WHERE name = '?'",
+                f"SELECT * FROM {cls.table_name()} WHERE name = ?",
                 (name,),
             )
             return cls._unmarshal(cur.fetchone())

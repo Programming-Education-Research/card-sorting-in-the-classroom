@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cardywardy"
+name = "csitc"
 version = "0.0.1"
 description = "card sort, refute, and reverse tracing question analysis"
 license = "AGPL-3.0-or-later"

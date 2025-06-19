@@ -2,6 +2,7 @@ import abc
 from dataclasses import dataclass
 from typing import Self
 
+from attempts.attempt import Attempt
 from database.orm import SimpleOrm, field
 from moodle.xml import RawQuestion
 
@@ -33,3 +34,13 @@ class Question(SimpleOrm, abc.ABC):
     @abc.abstractmethod
     def question(self) -> str:
         """Returns this question as a textual format without the prompt"""
+
+    @abc.abstractmethod
+    def grade_attempts(
+          self,
+          username: str,
+          course: str,
+          semester: str,
+          raw_attempts: list[str],
+    ) -> list[Attempt]:
+        """Parses and grades raw attempt data from Moodle"""

@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import IO
 
 
-def load_responses(responses: IO):
+def load(responses: IO):
     """Returns the responses from students' first attempt at a given quiz"""
     norm_responses = normalize_responses(json.load(responses)[0])
     by_attempts = fold_responses(norm_responses)
