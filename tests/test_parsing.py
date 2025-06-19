@@ -4,7 +4,7 @@ from approvaltests import verify
 
 import moodle
 from questions.utils import from_raw
-from utils import test
+from .utils import test
 
 
 @test

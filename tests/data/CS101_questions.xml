@@ -1,0 +1,2340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 590044  -->
+  <question type="coderunner">
+    <name>
+      <text>Card Sort — Boolean Reasoning</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Just because we can write code that runs doesn't mean it's code that works. When we write Boolean expressions, it is usually because we want them to be <code>True</code> in some cases and <code>False</code> in others — however, it is possible to write Boolean expressions that are always <code>True</code> or always <code>False</code>.</p>
+<p>Assuming the variables <code>x</code>, <code>y</code>, and <code>z</code> can be any integers, sort the cards into groups based on whether they are always <code>True</code>, always <code>False</code>, or can be either <code>True</code> or <code>False</code>.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>cardsort</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>0</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[{"prompt":"0 < x and x < 3","preformatted":true},{"prompt":"x == z or y != z","preformatted":true},{"prompt":"x < 0 and x > 5","preformatted":true},{"prompt":"x == y and x != y","preformatted":true},{"prompt":"x == y or x != y","preformatted":true},{"prompt":"x < 0 or x > 5","preformatted":true},{"prompt":"0 < x or x < 3","preformatted":true},{"prompt":"x < y and y < z and z < x","preformatted":true}]},{"title":"Always True","cards":[]},{"title":"Always False","cards":[]},{"title":"Either True or False","cards":[]}],"config":{"groupOrder":true,"groupWidth":"25"}}]}]]></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[]},{"title":"Always True","cards":[{"prompt":"x == y or x != y","preformatted":true},{"prompt":"0 < x or x < 3","preformatted":true}]},{"title":"Always False","cards":[{"prompt":"x < 0 and x > 5","preformatted":true},{"prompt":"x == y and x != y","preformatted":true},{"prompt":"x < y and y < z and z < x","preformatted":true}]},{"title":"Either True or False","cards":[{"prompt":"0 < x and x < 3","preformatted":true},{"prompt":"x == z or y != z","preformatted":true},{"prompt":"x < 0 or x > 5","preformatted":true}]}],"config":{"groupOrder":true,"groupWidth":"25"}}]}]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+  </question>
+
+<!-- question: 590058  -->
+  <question type="coderunner">
+    <name>
+      <text>Card Sort — Dict Result and Error Match</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Sort the code snippets from the leftmost panel (labelled <code>Cards</code>) into groups where all the cards in the same group produce <code>result</code> variables with the same value. Some of the cards, however, will raise an error; these cards should all be put into a separate group. For example, given the following three cards:</p>
+<div style="max-width: 30ch; margin: auto">
+    <pre style="border: 1px solid black; border-radius: 0.25em">data = {1: "a"}
+result = data[1]</pre>
+    <pre style="border: 1px solid black; border-radius: 0.25em">data = {}
+data[2] = "a"
+result = data[2]
+</pre>
+    <pre style="border: 1px solid black; border-radius: 0.25em">data = {"a": 1}
+result = data["b"]</pre>
+</div>
+<p>The first two cards create a <code>result</code> value of <code>"a"</code>; therefore, they would both go into the same group. The third group, however, raises an error because <code>"b"</code> is not a key in the <code>data</code> dictionary, so it would need to go into a different group.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>cardsort</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>0</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1.get(-1, \"x\")","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1[-1]","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nvalue = list(dict1.values())\nresult = value[1]","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1[2]","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nif \"b\" in dict1:\n    result = dict1[\"b\"]\nelse:\n    result = \"x\"","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1.get(2, \"x\")","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1[\"b\"]","preformatted":true}]},{"title":"Group 1","cards":[]},{"title":"Group 2","cards":[]},{"title":"Group 3","cards":[]}],"config":{"groupOrder":false,"groupWidth":"25"}}]}]]></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[]},{"title":"Group 1","cards":[{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1.get(-1, \"x\")","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nif \"b\" in dict1:\n    result = dict1[\"b\"]\nelse:\n    result = \"x\"","preformatted":true}]},{"title":"Group 2","cards":[{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nvalue = list(dict1.values())\nresult = value[1]","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1[2]","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1.get(2, \"x\")","preformatted":true}]},{"title":"Group 3","cards":[{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1[-1]","preformatted":true},{"prompt":"dict1 = {1: \"a\", 2: \"b\", 3: \"c\"}\nresult = dict1[\"b\"]","preformatted":true}]}],"config":{"groupOrder":false,"groupWidth":"25"}}]}]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+  </question>
+
+<!-- question: 590061  -->
+  <question type="coderunner">
+    <name>
+      <text>Card Sort — Dict Result Match</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Sort the code snippets from the leftmost panel (labelled <code>Cards</code>) into groups where all the cards in the same group create a dictionary (named <code>result</code>) with the same value. For example, given the following three cards:</p>
+<div style="max-width: 30ch; margin: auto">
+    <pre style="border: 1px solid black; border-radius: 0.25em">result = {1: "a"}</pre>
+    <pre style="border: 1px solid black; border-radius: 0.25em">result = {}
+result[1] = "a"</pre>
+    <pre style="border: 1px solid black; border-radius: 0.25em">result = {"a": 1}</pre>
+</div>
+<p>The first two cards create a <code>result</code> dictionary equal to <code>{1: "a"}</code>; therefore, they would both go into the same group. The third group, however, has a different <code>result</code> dictionary, <code>{"a": 1}</code>, so it would need to go into a different group.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>cardsort</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>0</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[{"prompt":"data = [\n    (\"a\", 1), (\"b\", 1), (\"b\", 1),\n    (\"c\", 1), (\"c\", 1), (\"c\", 1),\n]\nresult = dict(data)","preformatted":true},{"prompt":"result = {\"a\": 1, \"b\": 2, \"c\": 3}","preformatted":true},{"prompt":"result = {1: \"a\", 2: \"bb\", 3: \"ccc\"}","preformatted":true},{"prompt":"dict1 = {\"a\": 1, \"b\": 2, \"c\": 3}\nresult = {}\nfor key in dict1:\n    value = dict1[key]\n    result[value] = key * value","preformatted":true},{"prompt":"alph = \"abcdefghijklmnopqrstuvwxyz\"\nresult = {}\nfor char in \"cab\":\n    result[char] = alph.index(char) + 1","preformatted":true},{"prompt":"string = \"abc\"\nresult = {}\nfor char in string:\n    result[char] = string.count(char)","preformatted":true},{"prompt":"result = {\"a\": 0, \"b\": 0, \"c\": 0}\nstring = \"abcbcc\"\nfor char in string:\n    result[char] += 1","preformatted":true}]},{"title":"Group 1","cards":[]},{"title":"Group 2","cards":[]},{"title":"Group 3","cards":[]}],"config":{"groupOrder":false,"groupWidth":"25"}}]}]]></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[]},{"title":"Group 1","cards":[{"prompt":"data = [\n    (\"a\", 1), (\"b\", 1), (\"b\", 1),\n    (\"c\", 1), (\"c\", 1), (\"c\", 1),\n]\nresult = dict(data)","preformatted":true},{"prompt":"string = \"abc\"\nresult = {}\nfor char in string:\n    result[char] = string.count(char)","preformatted":true}]},{"title":"Group 2","cards":[{"prompt":"result = {\"a\": 1, \"b\": 2, \"c\": 3}","preformatted":true},{"prompt":"result = {\"a\": 0, \"b\": 0, \"c\": 0}\nstring = \"abcbcc\"\nfor char in string:\n    result[char] += 1","preformatted":true},{"prompt":"alph = \"abcdefghijklmnopqrstuvwxyz\"\nresult = {}\nfor char in \"cab\":\n    result[char] = alph.index(char) + 1","preformatted":true}]},{"title":"Group 3","cards":[{"prompt":"result = {1: \"a\", 2: \"bb\", 3: \"ccc\"}","preformatted":true},{"prompt":"dict1 = {\"a\": 1, \"b\": 2, \"c\": 3}\nresult = {}\nfor key in dict1:\n    value = dict1[key]\n    result[value] = key * value","preformatted":true}]}],"config":{"groupOrder":false,"groupWidth":"25"}}]}]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+  </question>
+
+<!-- question: 590047  -->
+  <question type="coderunner">
+    <name>
+      <text>Card Sort — Math Expressions</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">Put the cards into groups based on their value — i.e. all cards under the group labelled <code>"1 or 1.0"</code> should evaluate to either <code>1</code> or <code>1.0</code>.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>cardsort</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>0</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[{"prompt":"2 ** 3","preformatted":true},{"prompt":"3 // 2","preformatted":true},{"prompt":"4 ** 2 / 2","preformatted":true},{"prompt":"7 * 2 % 5","preformatted":true},{"prompt":"7 + -1","preformatted":true},{"prompt":"4 ** (2 / 2)","preformatted":true},{"prompt":"10 % 3","preformatted":true},{"prompt":"(7 * 2 - 1) // 2","preformatted":true},{"prompt":"(5 - 2) * 2","preformatted":true},{"prompt":"5 - 2 * 2","preformatted":true}]},{"title":"1 or 1.0","cards":[]},{"title":"4 or 4.0","cards":[]},{"title":"6 or 6.0","cards":[]},{"title":"8 or 8.0","cards":[]}],"config":{"groupOrder":true,"groupWidth":"18"}}]}]]></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[]},{"title":"1 or 1.0","cards":[{"prompt":"3 // 2","preformatted":true},{"prompt":"10 % 3","preformatted":true},{"prompt":"5 - 2 * 2","preformatted":true}]},{"title":"4 or 4.0","cards":[{"prompt":"7 * 2 % 5","preformatted":true},{"prompt":"4 ** (2 / 2)","preformatted":true}]},{"title":"6 or 6.0","cards":[{"prompt":"7 + -1","preformatted":true},{"prompt":"(7 * 2 - 1) // 2","preformatted":true},{"prompt":"(5 - 2) * 2","preformatted":true}]},{"title":"8 or 8.0","cards":[{"prompt":"2 ** 3","preformatted":true},{"prompt":"4 ** 2 / 2","preformatted":true}]}],"config":{"groupOrder":true,"groupWidth":"18"}}]}]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+  </question>
+
+<!-- question: 590039  -->
+  <question type="coderunner">
+    <name>
+      <text>Card Sort — Ranges</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">When programming, we often want to check if a value is inside or outside of a given range of numbers. For example, we might want to check if a value is within or outside of the range 0 to 10.</p>
+<p dir="ltr" style="text-align: left;">When talking about ranges, we often talk about ranges that are inclusive or exclusive — in programming, we are typically concerned with whether the last value (10 in the above example) is included in the range or excluded.</p>
+<p dir="ltr" style="text-align: left;">For example, "within 0 to 10 <strong>inclusive</strong>" would refer to the values <code>0, 1, ..., 9, and 10</code>. (I.e. it would include the 10). But "within 0 to 10 <strong>exclusive</strong>" would refer to the values <code>0, 1, ..., 8, and 9</code>. (I.e. not including the 10)</p>
+<p dir="ltr" style="text-align: left;">Assuming <code>x</code> is any integer, group cards below based on whether they check <code>x</code> is within or outside the inclusive or exclusive range 0 to 10.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>cardsort</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>18</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[{"prompt":"not (0 <= x < 10)","preformatted":true},{"prompt":"0 <= x <= 10","preformatted":true},{"prompt":"0 <= x and x <= 10","preformatted":true},{"prompt":"not (0 <= x <= 10)","preformatted":true},{"prompt":"not (0 <= x and x < 10)","preformatted":true},{"prompt":"0 <= x < 10","preformatted":true},{"prompt":"x < 0 or 10 < x","preformatted":true},{"prompt":"0 <= x and x < 10","preformatted":true},{"prompt":"x < 0 or 10 <= x","preformatted":true},{"prompt":"not (0 <= x and x <= 10)","preformatted":true}]},{"title":"Within 0 to 10 inclusive","cards":[]},{"title":"Within 0 to 10 exclusive","cards":[]},{"title":"Outside 0 to 10 inclusive","cards":[]},{"title":"Outside 0 to 10 exclusive","cards":[]}],"config":{"groupOrder":false,"groupWidth":"25"}}]}]]></answerpreload>
+    <globalextra></globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer><![CDATA[{"cardsort":[{"groups":[{"title":"Cards","cards":[]},{"title":"Within 0 to 10 inclusive","cards":[{"prompt":"0 <= x <= 10","preformatted":true},{"prompt":"0 <= x and x <= 10","preformatted":true}]},{"title":"Within 0 to 10 exclusive","cards":[{"prompt":"0 <= x < 10","preformatted":true},{"prompt":"0 <= x and x < 10","preformatted":true}]},{"title":"Outside 0 to 10 inclusive","cards":[{"prompt":"not (0 <= x <= 10)","preformatted":true},{"prompt":"not (0 <= x and x <= 10)","preformatted":true},{"prompt":"x < 0 or 10 < x","preformatted":true}]},{"title":"Outside 0 to 10 exclusive","cards":[{"prompt":"not (0 <= x < 10)","preformatted":true},{"prompt":"not (0 <= x and x < 10)","preformatted":true},{"prompt":"x < 0 or 10 <= x","preformatted":true}]}],"config":{"groupOrder":false,"groupWidth":"25"}}]}]]></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+  </question>
+
+<!-- question: 590051  -->
+  <question type="description">
+    <name>
+      <text>Card Sort Descripton</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">We are trying out a new <em>card sorting</em><span> question type that requires putting cards into groups. We are interested to know how you find these exercises and whether there are any improvements we can make.</span></p><p dir="ltr" style="text-align: left;">When doing the card sorts, it may be easiest to click the "Fullscreen" button so you have more space to work on them.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>0.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+  </question>
+
+<!-- question: 590056  -->
+  <question type="essay">
+    <name>
+      <text>Card Sort — Written Feedback</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">If you have any feedback about the above card sort, please let us know:<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <responseformat>plain</responseformat>
+    <responserequired>0</responserequired>
+    <responsefieldlines>2</responsefieldlines>
+    <minwordlimit></minwordlimit>
+    <maxwordlimit></maxwordlimit>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxbytes>0</maxbytes>
+    <filetypeslist></filetypeslist>
+    <graderinfo format="html">
+      <text></text>
+    </graderinfo>
+    <responsetemplate format="html">
+      <text></text>
+    </responsetemplate>
+  </question>
+
+<!-- question: 590049  -->
+  <question type="multichoice">
+    <name>
+      <text>Card Sort — Feedback</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">The above question was:<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">1 — Too Easy<br></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">2<br></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">3 — OK<br></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">4<br></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">5 — Too Hard<br></p>]]></text>
+      <feedback format="html">
+        <text></text>
+      </feedback>
+    </answer>
+  </question>
+
+<!-- question: 590066  -->
+  <question type="coderunner">
+    <name>
+      <text>PROTOTYPE_cardsort</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[Card sort refactor<br>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>cardsort</coderunnertype>
+    <prototypetype>2</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>5</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload><![CDATA[{"cardsort":[{"groups":[{"title":"Group A","cards":[{"prompt":"This is a card with some text\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines","preformatted":true},{"prompt":"The young woman at the next table is wearing a long purple dress, and I consider inviting her to join me for lunch. This invitation will surely be declined, nor would I be tempted to extend it under any other circumstances. But the intensity and saturation of that purple make her a public figure, in spite of her obvious self-absorption.","preformatted":false},{"prompt":"size = 7\nsize //= 2\nfor i in range(-size, size + 1):\n    for j in range(-size, size + 1):\n        if abs(i) == abs(j) or i == 0 or j == 0:\n            print('*', end='')\n        else:\n            print(' ', end='')\n    print()","preformatted":true},{"prompt":"Another card!","preformatted":true},{"prompt":"More cards\n\nWith text!","preformatted":false},{"prompt":"fghdjghjgf","preformatted":true},{"prompt":"abc","preformatted":true},{"prompt":"rgjkldhl","preformatted":true}]},{"title":"Group B","cards":[]},{"title":"Group C","cards":[]},{"title":"Group D","cards":[]},{"title":"Group E","cards":[]}],"config":{"groupOrder":true,"groupWidth":"41"}}]}]]></answerpreload>
+    <globalextra></globalextra>
+    <useace>1</useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[import json
+import math
+import sys
+from collections.abc import Mapping
+from pprint import pformat
+
+from munkres import Munkres, make_cost_matrix
+
+
+def dump_output_and_quit(mark: float, epilogue: str, exit_code: int = 0):
+    outcome = {
+        'fraction': mark,
+        'testresults': [],
+        'epiloguehtml': epilogue,
+        'columnformats': [],
+        'showdifferences': False
+    }
+    print(json.dumps(outcome))
+    sys.exit(exit_code)
+
+
+def prompt_set(group):
+    """{"cards": [{"prompt": "prompt", ...}, ...] -> {"prompt", ...}}"""
+    return {card["prompt"] for card in group["cards"]}
+
+
+def title_map(groups):
+    """
+    [{"title": "title", "cards": [{"prompt": "prompt", ...}, ...]}, ...]
+    -> {"title": {"prompt", ...}}
+    """
+    group_map = {}
+    for group in groups:
+        title = group["title"]
+        cards = prompt_set(group)
+        group_map[title] = cards
+    return group_map
+
+
+def edit_distance_ordered(student_groups, answer_groups):
+    answer = title_map(answer_groups)
+    student = title_map(student_groups)
+    if len(answer_groups) != len(answer) or len(student_groups) != len(student):
+        raise ValueError("Groups cannot have duplicate titles if order matters")
+    distance = 0
+    for title, cards in answer.items():
+        student_cards = student[title]
+        distance += len(cards - student_cards)
+    return distance
+
+
+def edit_distance_unordered(student_groups, answer_groups):
+    """
+    Returns the edit distance between two Sorts using the method described by
+    Deibel et al.
+
+    **See:** Deibel, K., Anderson, R., & Anderson, R. (2005). Using edit
+    distance to analyze card sorts. Expert Systems, 22(3), 129-138.
+    """
+    sort1 = [prompt_set(group) for group in answer_groups]
+    sort2 = [prompt_set(group) for group in student_groups]
+
+    matching_weights = [[] for _ in range(len(sort1))]
+    for i, group1 in enumerate(sort1):
+        for group2 in sort2:
+            intersection = len(group1 & group2)
+            matching_weights[i].append(intersection)
+
+    cost_matrix = make_cost_matrix(matching_weights)
+
+    running_sum = 0
+    for row, col in Munkres().compute(cost_matrix):
+        running_sum += matching_weights[row][col]
+
+    return len([c for group in sort1 for c in group]) - running_sum
+
+
+def parse(data: str) -> Mapping:
+    """
+    data is of the form::
+        {
+            "cardsort": [{
+                "groups": [
+                    {"title": "...",
+                     "cards": [{"prompt": "...", "preformatted": true/false}]},
+                ],
+                "config": {"groupOrder": true/false}
+            }]
+        }
+
+    where "cardsort" only contains one item
+    """
+    return json.loads(data)["cardsort"][0]
+
+
+def remove_unsorted_cards(groups):
+    """Removes any group named "cards" (case-insensitive)"""
+    return [group for group in groups if group["title"].lower() != "cards"]
+
+
+def pluralise(count, singular, plural):
+    return singular if count == 1 else plural
+
+
+def main():
+    student_answer = parse("""{{ STUDENT_ANSWER | e('py') }}""")
+    question_answer = parse("""{{ QUESTION.answer | e('py') }}""")
+    question_preload = parse("""{{ QUESTION.answerpreload | e('py') }}""")
+
+    is_ordered = question_answer["config"]["groupOrder"]
+
+    if is_ordered:
+        # I think I can just replace this with the number of cards
+        # but have not done the math
+        student_groups = student_answer["groups"]
+        answer_groups = question_answer["groups"]
+        preload_groups = question_preload["groups"]
+        max_distance = edit_distance_ordered(preload_groups, answer_groups)
+        distance = edit_distance_ordered(student_groups, answer_groups)
+    else:
+        student_groups = remove_unsorted_cards(student_answer["groups"])
+        answer_groups = question_answer["groups"]
+        preload_groups = remove_unsorted_cards(question_preload["groups"])
+        max_distance = edit_distance_unordered(preload_groups, answer_groups)
+        distance = edit_distance_unordered(student_groups, answer_groups)
+
+    scaled_dist = max(0.0, 1 - (distance / max_distance))
+
+    if math.isclose(scaled_dist, 1.0):
+        feedback = "<h3>Correct</h3>"
+    else:
+        cards = pluralise(distance, "card", "cards")
+        are = pluralise(distance, "is", "are")
+        feedback = "\n".join((
+            "<h3>Incorrect</h3>",
+            f"<p>{distance} {cards} {are} out of place.</p>"
+        ))
+
+    # feedback = f"""
+    # <p>Distance: {distance}</p>
+    # <p>Max Distance: {max_distance}</p>
+    # <p>Scaled Distance: {scaled_dist:.2f}</p>
+    #
+    # <h3>This Submission:</h3>
+    # <pre>{pformat(student_answer)}</pre>
+    #
+    # <h3>Question Answer:</h3>
+    # <pre>{pformat(question_answer)}</pre>
+    # """
+
+    dump_output_and_quit(scaled_dist, feedback)
+
+
+main()
+]]></template>
+    <iscombinatortemplate>1</iscombinatortemplate>
+    <allowmultiplestdins>0</allowmultiplestdins>
+    <answer><![CDATA[{"cardsort":[{"groups":[{"title":"Group A","cards":[{"prompt":"The young woman at the next table is wearing a long purple dress, and I consider inviting her to join me for lunch. This invitation will surely be declined, nor would I be tempted to extend it under any other circumstances. But the intensity and saturation of that purple make her a public figure, in spite of her obvious self-absorption.","preformatted":false},{"prompt":"abc","preformatted":true},{"prompt":"rgjkldhl","preformatted":true},{"prompt":"This is a card with some text\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines\n\nOver multiple lines","preformatted":true},{"prompt":"size = 7\nsize //= 2\nfor i in range(-size, size + 1):\n    for j in range(-size, size + 1):\n        if abs(i) == abs(j) or i == 0 or j == 0:\n            print('*', end='')\n        else:\n            print(' ', end='')\n    print()","preformatted":true},{"prompt":"Another card!","preformatted":true},{"prompt":"More cards\n\nWith text!","preformatted":false},{"prompt":"fghdjghjgf","preformatted":true}]},{"title":"Group B","cards":[]},{"title":"Group C","cards":[]},{"title":"Group D","cards":[]},{"title":"Group E","cards":[]}],"config":{"groupOrder":true,"groupWidth":"41"}}]}]]></answer>
+    <validateonsave>0</validateonsave>
+    <testsplitterre><![CDATA[|#<ab@17943918#@>#\n|ms]]></testsplitterre>
+    <language>python3</language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader>TemplateGrader</grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin>html</uiplugin>
+    <uiparameters><![CDATA[{"html_src": "prototypeextra"}]]></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra><![CDATA[<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Card Sort Question</title>
+  <style>
+    :root {
+      --CR-top-bar-colour: #5985a1;
+      --CR-group-colour: #b2d5eb;
+      --CR-background-colour: #fbf7f4;
+      --CR-sortable-colour: rgba(255, 255, 255, 0.6);
+    }
+
+    .ui-sortable-helper * {
+      z-index: 2 !important;
+    }
+
+    .qtype-coderunner-html-outer-div {
+      height: 100% !important;
+      min-height: 100% !important;
+    }
+
+    div[id$="answer_wrapper"].ui_wrapper,
+    div[id$="answerpreload_wrapper"].ui_wrapper {
+      min-height: 750px !important;
+      height: 750px;
+    }
+
+    .CR-answerbox {
+      /* flex is applied to the active answerbox */
+      height: 100%;
+      background-color: white;
+      box-sizing: border-box;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .CR-top-bar {
+      display: flex;
+      gap: 1rem;
+      flex-direction: row-reverse;
+      background-color: var(--CR-top-bar-colour);
+      align-items: center;
+      padding: 0 0.5rem;
+      height: 2.6rem;
+    }
+
+    .CR-content {
+      flex-grow: 1;
+      position: relative;
+      height: calc(100% - 2.6rem);
+    }
+
+    .CR-content .CR-left-shadow,
+    .CR-content .CR-right-shadow {
+      content: "";
+      pointer-events: none;
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+
+      z-index: 1;
+    }
+
+    .CR-answerbox textarea {
+      line-height: 1.2;
+    }
+
+    .CR-group-header-bar input {
+      width: 100%;
+    }
+
+    .CR-add-card {
+      min-width: 9ch;
+    }
+
+    .CR-group-container {
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-color: var(--CR-background-colour);
+    }
+
+    .CR-visible-groups-box {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+
+    .CR-groups {
+      width: fit-content;
+      display: flex;
+      gap: 1rem;
+      flex-grow: 1;
+    }
+
+    .CR-groups > :first-child {
+      position: sticky;
+      left: 0;
+      margin: 0;
+      border-radius: 0;
+      padding-top: 1rem;
+      z-index: 2;
+    }
+
+    .CR-group {
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--CR-group-colour);
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .CR-group-card-container {
+      flex-grow: 1;
+      /*overflow: auto;*/
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      border-radius: 0.25rem;
+      padding: 0.3rem;
+      height: 100%;
+      background-color: var(--CR-sortable-colour);
+      position: relative;
+    }
+
+    .CR-group-header-bar {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .CR-group-header-bar input {
+      flex-grow: 1;
+    }
+
+    .CR-card {
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+      background-color: white;
+      border: 1px solid black;
+      cursor: grab;
+      position: relative;
+    }
+
+    .CR-card-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .CR-preformat-checkbox-group,
+    .CR-group-order-checkbox-group,
+    .CR-group-width-input-group {
+      border: 1px solid black;
+      display: flex;
+      padding: 0 0.25rem;
+      gap: 0.5rem;
+    }
+
+    .CR-group-width-input-group input {
+      width: 8ch;
+    }
+
+    .CR-prompt {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    p.CR-prompt {
+      white-space: pre-wrap;
+    }
+
+    .CR-preload-warning p {
+      margin: 0.2rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+
+    .CR-cardsort-fullscreen-button {
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 0.2rem;
+      padding: 0.2rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<div id="CR-student-answer-___textareaId___" class="CR-answerbox" style="display: none">
+  <div class="CR-top-bar">
+    <button class="CR-cardsort-fullscreen-button">Fullscreen</button>
+    <button class="CR-add-group-button">Add Group</button>
+  </div>
+  <div class="CR-content">
+    <div class="CR-left-shadow"></div>
+    <div class="CR-right-shadow"></div>
+    <div class="CR-group-container">
+      <div class="CR-visible-groups-box"></div>
+      <div class="CR-groups"></div>
+    </div>
+  </div>
+</div>
+
+<div id="CR-answer-authoring-___textareaId___" class="CR-answerbox" style="display: none">
+  <div class="CR-top-bar">
+    <h3>Answer</h3>
+    <button class="CR-cardsort-fullscreen-button">Fullscreen</button>
+    <button class="CR-add-group-button">Add Group</button>
+  </div>
+  <div class="CR-content">
+    <div class="CR-left-shadow"></div>
+    <div class="CR-right-shadow"></div>
+    <div class="CR-group-container">
+      <div class="CR-visible-groups-box"></div>
+      <div class="CR-groups"></div>
+    </div>
+  </div>
+</div>
+
+<div id="CR-preload-authoring-___textareaId___" class="CR-answerbox" style="display: none">
+  <div class="CR-preload-warning">
+    <p><em>NOTE:
+      <em>ANY</em> added or edited cards/groups in the preload will reset the answer on save</em>
+    </p>
+  </div>
+  <div class="CR-top-bar">
+    <h3>Preload</h3>
+    <button class="CR-cardsort-fullscreen-button">Fullscreen</button>
+    <button class="CR-add-group-button">Add Group</button>
+    <div class="CR-group-order-checkbox-group">
+      <label for="ordered">Group Order Matters</label>
+      <input id="ordered" type="checkbox" name="ordered"/>
+    </div>
+    <div class="CR-group-width-input-group">
+      <label for="group-width">Group Width</label>
+      <input id="group-width" type="number" name="group-width" value="25"/>
+    </div>
+  </div>
+  <div class="CR-content">
+    <div class="CR-left-shadow"></div>
+    <div class="CR-right-shadow"></div>
+    <div class="CR-group-container">
+      <div class="CR-visible-groups-box"></div>
+      <div class="CR-groups"></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  //# sourceURL=Cardsorting.js
+  require(['jquery', 'jqueryui'], function ($, jqui) {
+
+    // THANK YOU Alconja
+    // https://stackoverflow.com/a/4372419/18307756
+    (function ($, undefined) {
+      $.widget("ui.fixedSortable", $.ui.sortable, {
+        _init: function () {
+          this.element.data("sortable", this.element.data("fixedSortable"));
+          return $.ui.sortable.prototype._init.apply(this, arguments);
+        },
+        _create: function () {
+          var result = $.ui.sortable.prototype._create.apply(this, arguments);
+          this.containerCache.sortable = this;
+          return result;
+        },
+        _intersectsWithPointer: function (item) {
+          // console.log(item)
+          // console.log(this)
+          if (!item.instance.element.hasClass("main-list")) {
+            let $main = $(item.instance.element).closest(".CR-groups").children(":first")
+            // $main.css("color", "red")
+            let top = $main.offset().top;
+            let left = $main.offset().left;
+            if (
+                this.positionAbs.top + this.offset.click.top >= top
+                && this.positionAbs.top + this.offset.click.top <= top + $main.height()
+                && this.positionAbs.left + this.offset.click.left >= left
+                && this.positionAbs.left + this.offset.click.left <= left + $main.width()
+            ) {
+              return false;
+            } else {
+              return $.ui.sortable.prototype._intersectsWithPointer.apply(this, arguments);
+            }
+          } else {
+            return $.ui.sortable.prototype._intersectsWithPointer.apply(this, arguments);
+          }
+
+
+//This line....
+//                     if (!item.instance.element.hasClass("main-list") && this.positionAbs.top + this.offset.click.top < $(window).scrollTop() + 87) {
+//                         return false;
+//                     }
+
+        },
+        _intersectsWith: function (containerCache) {
+          // console.log(containerCache.sortable.element)
+          if (!containerCache.sortable.element.hasClass("main-list")) {
+            let $main = $(containerCache.sortable.element).closest(".CR-groups").children(":first")
+            let top = $main.offset().top;
+            let left = $main.offset().left;
+            if (
+                this.positionAbs.top + this.offset.click.top >= top
+                && this.positionAbs.top + this.offset.click.top <= top + $main.height()
+                && this.positionAbs.left + this.offset.click.left >= left
+                && this.positionAbs.left + this.offset.click.left <= left + $main.width()
+            ) {
+              return false;
+            } else {
+              return $.ui.sortable.prototype._intersectsWith.apply(this, arguments);
+            }
+          } else {
+            return $.ui.sortable.prototype._intersectsWith.apply(this, arguments);
+          }
+
+//Also this line....
+//                     if (!containerCache.sortable.element.hasClass("main-list") && this.positionAbs.top + this.offset.click.top < $(window).scrollTop() + 87) {
+//                         return false;
+//                     }
+          return $.ui.sortable.prototype._intersectsWith.apply(this, arguments);
+        }
+      });
+    })(jQuery);
+
+    function turn_on_touch() {
+      // Turn on touch functionality
+      // Detect touch support
+
+      /*!
+      * jQuery UI Touch Punch 0.2.3
+      *
+      * Copyright 2011–2014, Dave Furfero
+      * Dual licensed under the MIT or GPL Version 2 licenses.
+      *
+      * Depends:
+      *  jquery.ui.widget.js
+      *  jquery.ui.mouse.js
+      */
+      $.support.touch = 'ontouchend' in document;
+
+      // Ignore browsers without touch support
+      if (!$.support.touch) {
+        return;
+      }
+
+      var mouseProto = $.ui.mouse.prototype,
+          _mouseInit = mouseProto._mouseInit,
+          _mouseDestroy = mouseProto._mouseDestroy,
+          touchHandled;
+
+      /**
+       * Simulate a mouse event based on a corresponding touch event
+       * @param {Object} event A touch event
+       * @param {String} simulatedType The corresponding mouse event
+       */
+      function simulateMouseEvent(event, simulatedType) {
+
+        // Ignore multi-touch events
+        if (event.originalEvent.touches.length > 1) {
+          return;
+        }
+
+        event.preventDefault();
+
+        var touch = event.originalEvent.changedTouches[0],
+            simulatedEvent = document.createEvent('MouseEvents');
+
+        // Initialize the simulated mouse event using the touch event's coordinates
+        simulatedEvent.initMouseEvent(
+            simulatedType,    // type
+            true,             // bubbles
+            true,             // cancelable
+            window,           // view
+            1,                // detail
+            touch.screenX,    // screenX
+            touch.screenY,    // screenY
+            touch.clientX,    // clientX
+            touch.clientY,    // clientY
+            false,            // ctrlKey
+            false,            // altKey
+            false,            // shiftKey
+            false,            // metaKey
+            0,                // button
+            null              // relatedTarget
+        );
+
+        // Dispatch the simulated event to the target element
+        event.target.dispatchEvent(simulatedEvent);
+      }
+
+      /**
+       * Handle the jQuery UI widget's touchstart events
+       * @param {Object} event The widget element's touchstart event
+       */
+      mouseProto._touchStart = function (event) {
+
+        var self = this;
+
+        // Ignore the event if another widget is already being handled
+        if (touchHandled || !self._mouseCapture(event.originalEvent.changedTouches[0])) {
+          return;
+        }
+
+        // Set the flag to prevent other widgets from inheriting the touch event
+        touchHandled = true;
+
+        // Track movement to determine if interaction was a click
+        self._touchMoved = false;
+
+        // Simulate the mouseover event
+        simulateMouseEvent(event, 'mouseover');
+
+        // Simulate the mousemove event
+        simulateMouseEvent(event, 'mousemove');
+
+        // Simulate the mousedown event
+        simulateMouseEvent(event, 'mousedown');
+      };
+
+      /**
+       * Handle the jQuery UI widget's touchmove events
+       * @param {Object} event The document's touchmove event
+       */
+      mouseProto._touchMove = function (event) {
+
+        // Ignore event if not handled
+        if (!touchHandled) {
+          return;
+        }
+
+        // Interaction was not a click
+        this._touchMoved = true;
+
+        // Simulate the mousemove event
+        simulateMouseEvent(event, 'mousemove');
+      };
+
+      /**
+       * Handle the jQuery UI widget's touchend events
+       * @param {Object} event The document's touchend event
+       */
+      mouseProto._touchEnd = function (event) {
+
+        // Ignore event if not handled
+        if (!touchHandled) {
+          return;
+        }
+
+        // Simulate the mouseup event
+        simulateMouseEvent(event, 'mouseup');
+
+        // Simulate the mouseout event
+        simulateMouseEvent(event, 'mouseout');
+
+        // If the touch interaction did not move, it should trigger a click
+        if (!this._touchMoved) {
+
+          // Simulate the click event
+          simulateMouseEvent(event, 'click');
+        }
+
+        // Unset the flag to allow other widgets to inherit the touch event
+        touchHandled = false;
+      };
+
+      /**
+       * A duck punch of the $.ui.mouse _mouseInit method to support touch events.
+       * This method extends the widget with bound touch event handlers that
+       * translate touch events to mouse events and pass them to the widget's
+       * original mouse event handling methods.
+       */
+      mouseProto._mouseInit = function () {
+
+        var self = this;
+
+        // Delegate the touch handlers to the widget's element
+        self.element.bind({
+          touchstart: $.proxy(self, '_touchStart'),
+          touchmove: $.proxy(self, '_touchMove'),
+          touchend: $.proxy(self, '_touchEnd')
+        });
+
+        // Call the original $.ui.mouse init method
+        _mouseInit.call(self);
+      };
+
+      /**
+       * Remove the touch event handlers
+       */
+      mouseProto._mouseDestroy = function () {
+
+        var self = this;
+
+        // Delegate the touch handlers to the widget's element
+        self.element.unbind({
+          touchstart: $.proxy(self, '_touchStart'),
+          touchmove: $.proxy(self, '_touchMove'),
+          touchend: $.proxy(self, '_touchEnd')
+        });
+
+        // Call the original $.ui.mouse destroy method
+        _mouseDestroy.call(self);
+      };
+    }
+
+    turn_on_touch(); // Run the jquery ui touch code.
+
+
+    // A global mapping between answerbox IDs and the CardSort widgets
+    if (!window.CRidWidgetMap) {
+      window.CRidWidgetMap = {};
+      window.onresize = () => {
+        Object.values(window.CRidWidgetMap).forEach(val => val.refreshUI());
+      }
+    }
+
+    $.valHooks["div"] = {
+      get: function (elt) {
+        const $elt = $(elt);
+        const widget = window.CRidWidgetMap[$elt.attr('id')];
+        if (widget) {
+          return widget.asJSON();
+        } else {
+          console.log("Called val on unrecognised div")
+          return {}
+        }
+      }
+    }
+    $.valHooks["pre"] = {
+      get: function (elt) {
+        return $(elt).text()
+      }
+    }
+    $.valHooks["h4"] = {
+      get: function (elt) {
+        return $(elt).text()
+      }
+    }
+    $.valHooks["p"] = {
+      get: function (elt) {
+        return $(elt).text()
+      }
+    }
+
+    /** Parses JSON to an object or returns an empty object if the string is not valid JSON */
+    function parseJSON(aString) {
+      try {
+        return JSON.parse(aString)
+      } catch (SyntaxError) {
+        return {}
+      }
+    }
+
+    const CardSort = function () {
+      this.$preloadAnswerbox = $(document.getElementById("CR-preload-authoring-___textareaId___"));
+      this.$answerAnswerbox = $(document.getElementById("CR-answer-authoring-___textareaId___"));
+      this.$studentAnswerbox = $(document.getElementById("CR-student-answer-___textareaId___"));
+
+      this.$answerbox = this.activeAnswerbox();
+    }
+
+    CardSort.prototype.init = function () {
+      this.$answerbox.css("display", "flex");  // show the active answer
+      this.setupHooks();
+      this.setupFullscreenButton();
+
+      this.load();
+
+      this.fitCards();
+      this.setupResetButton();
+      this.setupAddGroupButton();
+      this.setupScrollShadow();
+
+      $(".CR-groups > .CR-group:first-child .CR-group-card-container", this.$answerbox)
+          .addClass("main-list")
+
+      this.makeSortable();
+      this.setupDeleteCardButton();
+
+      this.refreshUI();
+    }
+
+    CardSort.prototype.refreshUI = function () {
+      this.setupInputs();
+      this.setupDeleteGroupButton();
+      this.setupAddCardButton();
+      this.setupAddGroupButton();
+      this.makeSortable();
+      this.setupDeleteCardButton();
+      this.fitCards();
+      this.disableGrammarly();
+      this.setTextAreaHeight();
+      this.setupPreformatCheckbox();
+
+
+      // Some changes take a second to update the window fully
+      setTimeout(() => {
+        // resets scroll shadow on change
+        $(".CR-group-container", this.$answerbox).trigger("scroll");
+
+        // Stops weird behaviour with the index (top left) gaining focus??? mostly???
+        this.$answerbox
+            .off("click")
+            .on("click", function (e) {
+              e.stopPropagation();
+              e.preventDefault();
+            })
+      }, 150);
+    }
+
+    CardSort.prototype.makeSortable = function () {
+      // Coderunner IDs break normal selectors
+      let container = `*[id="${this.$answerbox.attr('id')}"] .CR-group-card-container`
+      $(".CR-group-card-container", this.$answerbox)
+          .fixedSortable({connectWith: container, cursor: "grabbing", tolerance: "pointer"});
+      $(".CR-group-card-container", this.$answerbox)
+          .disableSelection();
+    }
+
+    /** Adds name + coderunner-ui class to active answerbox + registers the
+     * active answerbox's ID in the global id to widget map */
+    CardSort.prototype.setupHooks = function () {
+      this.$answerbox.addClass("coderunner-ui-element");
+      this.$answerbox.attr("name", "cardsort");
+      window.CRidWidgetMap[this.$answerbox.attr("id")] = this;
+    }
+
+    CardSort.prototype.load = function () {
+      let data;
+      if (this.isPreload()) {
+        data = this.preloadJSON();
+      } else {
+        let preload = this.preloadJSON();
+        data = this.isStudentAnswer() ? this.studentAnswerJSON() : this.answerAuthoringJSON();
+        let preloadGroups = preload["groups"].map(it => it["title"]).sort();
+        let dataGroups = data["groups"].map(it => it["title"]).sort();
+        let groupsAreSame = preloadGroups.toString() === dataGroups.toString();
+
+        let preloadCards = preload["groups"].flatMap(it => it["cards"]).map(it => JSON.stringify(it)).sort();
+        let dataCards = data["groups"].flatMap(it => it["cards"]).map(it => JSON.stringify(it)).sort();
+        let cardsAreSame = preloadCards.toString() === dataCards.toString();
+
+        // TODO – Handle this better
+        data = groupsAreSame && cardsAreSame ? data : preload;
+      }
+      for (const group of data["groups"]) {
+        $(".CR-groups", this.$answerbox)
+            .append(this.groupFromJSON(group));
+      }
+
+      let config = data["config"];
+      $(".CR-group-order-checkbox-group :checkbox", this.$answerbox)
+          .prop("checked", config["groupOrder"])
+
+      $(".CR-group-width-input-group input", this.$answerbox)
+          .val(config["groupWidth"])
+
+      this.refreshUI();
+    }
+
+    CardSort.prototype.preloadJSON = function () {
+      if (this.isStudentAnswer()) {
+        // textareaid macro is prefixed with "id_" however reset button id does not include this prefix
+        const buttonID = "___textareaId___".slice(3, -7) + "_-resetbutton";
+        const btnElement = $(document.getElementById(buttonID));
+        return parseJSON($(btnElement).attr('data-reload-text'))["cardsort"][0];
+      } else {
+        return parseJSON($(document.getElementById("id_answerpreload")).text())["cardsort"][0];
+      }
+    }
+
+    CardSort.prototype.answerAuthoringJSON = function () {
+      if (!this.isStudentAnswer()) {
+        return parseJSON($(document.getElementById("id_answer")).text())["cardsort"][0];
+      } else {
+        return {}
+      }
+    }
+
+    CardSort.prototype.studentAnswerJSON = function () {
+      if (this.isStudentAnswer()) {
+        return parseJSON($(document.getElementById("___textareaId___")).text())["cardsort"][0];
+      } else {
+        return {};
+      }
+    }
+
+    /**
+     * @returns {boolean} true if the current window is an answer preload
+     */
+    CardSort.prototype.isPreload = function () {
+      // Don't know why this works – inspiration taken from Parsons example
+      return this.$studentAnswerbox.closest(".preloadanswer").length > 0;
+    };
+
+    /**
+     * @returns {boolean} true if the current window is the student answer
+     */
+    CardSort.prototype.isStudentAnswer = function () {
+      // Don't know why this works – inspiration taken from Parsons example
+      return this.$studentAnswerbox.closest(".que").length > 0;
+    };
+
+    /**
+     * @returns {boolean} true is the current window is the answer authoring window
+     */
+    CardSort.prototype.isAnswerAuthoring = function () {
+      return !this.isPreload() && !this.isStudentAnswer();
+    };
+
+    /**
+     * @returns {jQuery} the root div of the active answer
+     */
+    CardSort.prototype.activeAnswerbox = function () {
+      if (this.isPreload()) {
+        return this.$preloadAnswerbox;
+      } else if (this.isStudentAnswer()) {
+        return this.$studentAnswerbox;
+      } else {
+        return this.$answerAnswerbox;
+      }
+    }
+
+    CardSort.prototype.setupDeleteGroupButton = function () {
+      let refresh = () => this.refreshUI();
+      $(".CR-group .CR-delete-group", this.$answerbox)
+          .off("click")
+          .on("click", function () {
+            let $group = $(this).closest(".CR-group");
+            if ($(".CR-group-card-container > *", $group).length === 0) {
+              $group.remove();
+            } else {
+              alert("Cannot delete non-empty group");
+            }
+            refresh();
+            return false;
+          })
+    }
+
+    CardSort.prototype.setupAddCardButton = function () {
+      let refresh = () => this.refreshUI();
+      let emptyCard = () => this.emptyCard();
+      $(".CR-group .CR-add-card", this.$answerbox)
+          .off("click")
+          .on("click", function () {
+            let $cardContainer = $(".CR-group-card-container", $(this).closest(".CR-group"));
+            $cardContainer.append(emptyCard());
+            refresh();
+            return false;
+          });
+    }
+
+    CardSort.prototype.setupDeleteCardButton = function () {
+      let refresh = () => this.refreshUI();
+      $(".CR-delete-card-button", this.$answerbox)
+          .off("click")
+          .on("click", function () {
+            $(this).closest(".CR-card").remove();
+            refresh();
+            return false;
+          });
+    }
+
+    /** Sets up the fullscreen button for the active answerbox */
+    CardSort.prototype.setupFullscreenButton = function () {
+      let refresh = () => this.refreshUI();
+      $(".CR-cardsort-fullscreen-button", this.$answerbox)
+          .on("click", function () {
+            if (document.fullscreenElement) {
+              if (document.exitFullscreen) {
+                document.exitFullscreen();
+              } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+              }
+            } else {
+              const element = $(this).closest(".CR-answerbox")[0]
+              if (element.requestFullscreen) {
+                element.requestFullscreen();
+              } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+              }
+            }
+            refresh();
+            return false;
+          })
+    }
+
+    CardSort.prototype.setupResetButton = function () {
+      // textareaid macro is prefixed with "id_" however reset button id does not include this prefix
+      const buttonID = "___textareaId___".slice(3, -7) + "_-resetbutton";
+      const btnElement = $(document.getElementById(buttonID));
+      let refresh = () => this.refreshUI();
+      $(btnElement).on('click', function () {
+        const answer = document.getElementById('___textareaId___');
+        $(answer).text($(this).attr('data-reload-text'));
+        refresh();
+        return false;
+      })
+    }
+
+    CardSort.prototype.setupAddGroupButton = function () {
+      // Todo – when dynamically selecting open vs closed sorts change this
+      if (!this.isPreload()) {
+        $(".CR-add-group-button", this.$answerbox)
+            .remove();
+        return;
+      }
+
+      let $groups = $(".CR-groups", this.$answerbox)
+      let refresh = () => this.refreshUI();
+      let emptyGroup = () => this.emptyGroup();
+      $(".CR-add-group-button", this.$answerbox)
+          .off("click")
+          .on("click", function () {
+            $groups.append(emptyGroup());
+            refresh();
+            return false;
+          })
+    }
+
+    CardSort.prototype.setupPreformatCheckbox = function () {
+      let refresh = () => this.refreshUI();
+      $(".CR-preformat-checkbox-group :checkbox, .CR-group-order-checkbox-group :checkbox", this.$answerbox)
+          .off("click")
+          .on("click", function (e) {
+            refresh();
+            e.stopPropagation();
+          });  // for some reason this is needed for checkboxes to work.
+    }
+
+    CardSort.prototype.setupScrollShadow = function () {
+      let $leftShadow = $(".CR-left-shadow", this.$answerbox);
+      let $rightShadow = $(".CR-right-shadow", this.$answerbox);
+
+      let $groupsArea = $(".CR-visible-groups-box", this.$answerbox);
+      let $content = $(".CR-content", this.$answerbox)
+
+      $(".CR-group-container", this.$answerbox)
+          .off("scroll")
+          .on("scroll", function () {
+            let horizontalOffset = $content.width() - $groupsArea.width()
+            let verticalOffset = $content.height() - $groupsArea.height()
+
+            let maxScrollLeft = this.scrollWidth - this.clientWidth;
+            let leftShadowSize = Math.min(30, $(this).scrollLeft());
+            let rightShadowSize = -Math.min(30, maxScrollLeft - $(this).scrollLeft());
+            $leftShadow
+                .css("box-shadow", `inset ${leftShadowSize}px 0 30px -30px rgba(0, 0, 0, 0.6)`)
+                .css("bottom", `${verticalOffset}px`);
+            $rightShadow
+                .css("box-shadow", `inset ${rightShadowSize}px 0 30px -30px rgba(0, 0, 0, 0.6)`)
+                .css("right", `${horizontalOffset}px`)
+                .css("bottom", `${verticalOffset}px`);
+          })
+          .trigger("scroll");
+    }
+
+    CardSort.prototype.setupInputs = function () {
+      let setHeight = () => this.setTextAreaHeight();
+      let setWidth = () => this.fitCards();
+      $("textarea", this.$answerbox)
+          .off("input click")
+          .on("input click", function () {
+            setWidth();
+            setHeight();
+            return false;
+          });
+
+      $("input", this.$answerbox)
+          .off("click")
+          .on("click", function () {
+            setWidth();
+            setHeight();
+            return false;
+          });
+    }
+
+    CardSort.prototype.fitCards = function () {
+      let width = Math.max(
+          ...(this.cardJSON()
+              .filter(card => card["preformatted"])
+              .map(card => card["prompt"])
+              .flatMap(text => text.split(/\r?\n/))
+              .map(line => line.length))
+      );
+      width = Math.max(this.configJSON()["groupWidth"], width + 5);
+      $(".CR-group", this.$answerbox)
+          .css("width", `${width}ch`);
+      $(".CR-left-shadow", this.$answerbox)
+          .css("left", `${width}ch`);
+    }
+
+    CardSort.prototype.setTextAreaHeight = function () {
+      $(".CR-group-card-container textarea", this.$answerbox)
+          .each(function () {
+            if (this.clientHeight !== this.scrollHeight) {
+              $(this).height(`${this.scrollHeight}px`);
+            }
+          })
+    }
+
+    CardSort.prototype.cardJSON = function () {
+      return $(".CR-group .CR-card", this.$answerbox).map((i, c) => this.cardToJSON(c)).get()
+    }
+
+    CardSort.prototype.configJSON = function () {
+      if (this.isPreload()) {
+        return {
+          "groupOrder": $(".CR-group-order-checkbox-group :checkbox", this.$answerbox).prop("checked"),
+          "groupWidth": $(".CR-group-width-input-group input", this.$answerbox).val(),
+        };
+      } else {
+        return {
+          "groupOrder": this.preloadJSON()["config"]["groupOrder"],
+          "groupWidth": this.preloadJSON()["config"]["groupWidth"],
+        };
+      }
+    }
+
+    /** Returns this card sort as a JSON object */
+    CardSort.prototype.asJSON = function () {
+      return {
+        "groups": $(".CR-group", this.$answerbox)
+            .map((i, e) => this.groupToJSON(e)).get(),
+        "config": this.configJSON(),
+      };
+    }
+
+    CardSort.prototype.groupFromJSON = function (groupJSON) {
+      let $group = $(`<div class="CR-group"></div>`);
+      let $headerBar = $(`<div class="CR-group-header-bar"></div>`);
+      let $cardContainer = $(`<div class="CR-group-card-container"></div>`);
+      $group.append($headerBar);
+      $group.append($cardContainer);
+
+      if (this.isPreload()) {
+        $headerBar.append(`<input class="CR-group-title" value="${groupJSON["title"]}"/>`);
+        $headerBar.append(`<button class="CR-add-card">Add Card</button>`);
+        $headerBar.append(`<button class="CR-delete-group">Delete</button>`);
+      } else {
+        $headerBar.append(`<h4 class="CR-group-title">${groupJSON["title"]}</h4>`);
+      }
+
+      let cards = groupJSON["cards"];
+      for (const card of cards) {
+        $cardContainer.append(this.cardFromJSON(card));
+      }
+
+      return $group;
+    }
+
+    CardSort.prototype.groupToJSON = function (group) {
+      return {
+        "title": $(".CR-group-title", group).val(),
+        "cards": $(".CR-group-card-container .CR-card", group)
+            .map((i, e) => this.cardToJSON(e)).get(),
+      }
+    }
+
+    CardSort.prototype.emptyGroup = function () {
+      return this.groupFromJSON({"title": "", "cards": []})
+    }
+
+    CardSort.prototype.cardFromJSON = function (cardJSON) {
+      let $card = $(`<div class="CR-card"></div>`);
+      if (this.isPreload()) {
+        $card.append(`<textarea class="CR-prompt">${cardJSON["prompt"]}</textarea>`);
+        let $cardButtons = $(`
+                    <div class="CR-card-buttons">
+                      <button class="CR-delete-card-button">Delete Card</button>
+                      <div class="CR-preformat-checkbox-group">
+                        <label>Preformatted</label>
+                        <input name="preformat" type="checkbox"/>
+                      </div>
+                    </div>
+                `);
+        let $formatOption = $("input", $cardButtons);
+        $formatOption.prop("checked", cardJSON["preformatted"]);
+        $card.append($cardButtons);
+      } else {
+        $card.append(cardJSON["preformatted"]
+            ? `<pre class="CR-prompt">${cardJSON["prompt"]}</pre>`
+            : `<p class="CR-prompt">${cardJSON["prompt"]}</p>`
+        )
+      }
+      return $card;
+    }
+
+    CardSort.prototype.cardIsPreformatted = function (card) {
+      return $(".CR-preformat-checkbox-group :checkbox", card).prop("checked")
+          || $(".CR-prompt", card).is("pre");
+    }
+
+    CardSort.prototype.cardToJSON = function (card) {
+      return {
+        "prompt": $(".CR-prompt", card).val() || "",
+        "preformatted": this.cardIsPreformatted(card),
+      };
+    }
+
+    CardSort.prototype.emptyCard = function () {
+      return this.cardFromJSON({"prompt": "", "preformatted": true});
+    }
+
+    CardSort.prototype.disableGrammarly = function () {
+      $("textarea", this.$answerbox).attr("data-gramm", false);
+    }
+
+    function setup() {
+      const cardSort = new CardSort();
+      cardSort.init();
+    }
+
+    $(document).ready(setup);
+
+  });
+</script>
+
+</body>
+</html>
+]]></prototypeextra>
+    <testcases>
+<file name="munkres.py" path="/" encoding="base64">IiIiCkludHJvZHVjdGlvbgo9PT09PT09PT09PT0KClRoZSBNdW5rcmVzIG1vZHVsZSBwcm92aWRlcyBhbiBpbXBsZW1lbnRhdGlvbiBvZiB0aGUgTXVua3JlcyBhbGdvcml0aG0KKGFsc28gY2FsbGVkIHRoZSBIdW5nYXJpYW4gYWxnb3JpdGhtIG9yIHRoZSBLdWhuLU11bmtyZXMgYWxnb3JpdGhtKSwKdXNlZnVsIGZvciBzb2x2aW5nIHRoZSBBc3NpZ25tZW50IFByb2JsZW0uCgpGb3IgY29tcGxldGUgdXNhZ2UgZG9jdW1lbnRhdGlvbiwgc2VlOiBodHRwczovL3NvZnR3YXJlLmNsYXBwZXIub3JnL211bmtyZXMvCgoKQ29weXJpZ2h0IMKpIDIwMDgtMjAxOSBCcmlhbiBNLiBDbGFwcGVyCgpMaWNlbnNlZCB1bmRlciB0aGUgQXBhY2hlIExpY2Vuc2UsIFZlcnNpb24gMi4wICh0aGUgIkxpY2Vuc2UiKTsKeW91IG1heSBub3QgdXNlIHRoaXMgZmlsZSBleGNlcHQgaW4gY29tcGxpYW5jZSB3aXRoIHRoZSBMaWNlbnNlLgpZb3UgbWF5IG9idGFpbiBhIGNvcHkgb2YgdGhlIExpY2Vuc2UgYXQKCiAgaHR0cHM6Ly93d3cuYXBhY2hlLm9yZy9saWNlbnNlcy9MSUNFTlNFLTIuMAoKVW5sZXNzIHJlcXVpcmVkIGJ5IGFwcGxpY2FibGUgbGF3IG9yIGFncmVlZCB0byBpbiB3cml0aW5nLCBzb2Z0d2FyZQpkaXN0cmlidXRlZCB1bmRlciB0aGUgTGljZW5zZSBpcyBkaXN0cmlidXRlZCBvbiBhbiAiQVMgSVMiIEJBU0lTLApXSVRIT1VUIFdBUlJBTlRJRVMgT1IgQ09ORElUSU9OUyBPRiBBTlkgS0lORCwgZWl0aGVyIGV4cHJlc3Mgb3IgaW1wbGllZC4KU2VlIHRoZSBMaWNlbnNlIGZvciB0aGUgc3BlY2lmaWMgbGFuZ3VhZ2UgZ292ZXJuaW5nIHBlcm1pc3Npb25zIGFuZApsaW1pdGF0aW9ucyB1bmRlciB0aGUgTGljZW5zZS4KIiIiCgpfX2RvY2Zvcm1hdF9fID0gJ21hcmtkb3duJwoKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KIyBJbXBvcnRzCiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCgppbXBvcnQgc3lzCmltcG9ydCBjb3B5CmZyb20gdHlwaW5nIGltcG9ydCBVbmlvbiwgTmV3VHlwZSwgU2VxdWVuY2UsIFR1cGxlLCBPcHRpb25hbCwgQ2FsbGFibGUKCiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiMgRXhwb3J0cwojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKX19hbGxfXyAgICAgPSBbJ011bmtyZXMnLCAnbWFrZV9jb3N0X21hdHJpeCcsICdESVNBTExPV0VEJ10KCiMgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiMgR2xvYmFscwojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKQW55TnVtID0gTmV3VHlwZSgnQW55TnVtJywgVW5pb25baW50LCBmbG9hdF0pCk1hdHJpeCA9IE5ld1R5cGUoJ01hdHJpeCcsIFNlcXVlbmNlW1NlcXVlbmNlW0FueU51bV1dKQoKIyBJbmZvIGFib3V0IHRoZSBtb2R1bGUKX192ZXJzaW9uX18gICA9ICIxLjEuNCIKX19hdXRob3JfXyAgICA9ICJCcmlhbiBDbGFwcGVyLCBibWNAY2xhcHBlci5vcmciCl9fdXJsX18gICAgICAgPSAiaHR0cHM6Ly9zb2Z0d2FyZS5jbGFwcGVyLm9yZy9tdW5rcmVzLyIKX19jb3B5cmlnaHRfXyA9ICIoYykgMjAwOC0yMDIwIEJyaWFuIE0uIENsYXBwZXIiCl9fbGljZW5zZV9fICAgPSAiQXBhY2hlIFNvZnR3YXJlIExpY2Vuc2UiCgojIENvbnN0YW50cwpjbGFzcyBESVNBTExPV0VEX09CSihvYmplY3QpOgogICAgcGFzcwpESVNBTExPV0VEID0gRElTQUxMT1dFRF9PQkooKQpESVNBTExPV0VEX1BSSU5UVkFMID0gIkQiCgojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQojIEV4Y2VwdGlvbnMKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCmNsYXNzIFVuc29sdmFibGVNYXRyaXgoRXhjZXB0aW9uKToKICAgICIiIgogICAgRXhjZXB0aW9uIHJhaXNlZCBmb3IgdW5zb2x2YWJsZSBtYXRyaWNlcwogICAgIiIiCiAgICBwYXNzCgojIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQojIENsYXNzZXMKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCmNsYXNzIE11bmtyZXM6CiAgICAiIiIKICAgIENhbGN1bGF0ZSB0aGUgTXVua3JlcyBzb2x1dGlvbiB0byB0aGUgY2xhc3NpY2FsIGFzc2lnbm1lbnQgcHJvYmxlbS4KICAgIFNlZSB0aGUgbW9kdWxlIGRvY3VtZW50YXRpb24gZm9yIHVzYWdlLgogICAgIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYpOgogICAgICAgICIiIkNyZWF0ZSBhIG5ldyBpbnN0YW5jZSIiIgogICAgICAgIHNlbGYuQyA9IE5vbmUKICAgICAgICBzZWxmLnJvd19jb3ZlcmVkID0gW10KICAgICAgICBzZWxmLmNvbF9jb3ZlcmVkID0gW10KICAgICAgICBzZWxmLm4gPSAwCiAgICAgICAgc2VsZi5aMF9yID0gMAogICAgICAgIHNlbGYuWjBfYyA9IDAKICAgICAgICBzZWxmLm1hcmtlZCA9IE5vbmUKICAgICAgICBzZWxmLnBhdGggPSBOb25lCgogICAgZGVmIHBhZF9tYXRyaXgoc2VsZiwgbWF0cml4OiBNYXRyaXgsIHBhZF92YWx1ZTogaW50PTApIC0+IE1hdHJpeDoKICAgICAgICAiIiIKICAgICAgICBQYWQgYSBwb3NzaWJseSBub24tc3F1YXJlIG1hdHJpeCB0byBtYWtlIGl0IHNxdWFyZS4KCiAgICAgICAgKipQYXJhbWV0ZXJzKioKCiAgICAgICAgLSBgbWF0cml4YCAobGlzdCBvZiBsaXN0cyBvZiBudW1iZXJzKTogbWF0cml4IHRvIHBhZAogICAgICAgIC0gYHBhZF92YWx1ZWAgKGBpbnRgKTogdmFsdWUgdG8gdXNlIHRvIHBhZCB0aGUgbWF0cml4CgogICAgICAgICoqUmV0dXJucyoqCgogICAgICAgIGEgbmV3LCBwb3NzaWJseSBwYWRkZWQsIG1hdHJpeAogICAgICAgICIiIgogICAgICAgIG1heF9jb2x1bW5zID0gMAogICAgICAgIHRvdGFsX3Jvd3MgPSBsZW4obWF0cml4KQoKICAgICAgICBmb3Igcm93IGluIG1hdHJpeDoKICAgICAgICAgICAgbWF4X2NvbHVtbnMgPSBtYXgobWF4X2NvbHVtbnMsIGxlbihyb3cpKQoKICAgICAgICB0b3RhbF9yb3dzID0gbWF4KG1heF9jb2x1bW5zLCB0b3RhbF9yb3dzKQoKICAgICAgICBuZXdfbWF0cml4ID0gW10KICAgICAgICBmb3Igcm93IGluIG1hdHJpeDoKICAgICAgICAgICAgcm93X2xlbiA9IGxlbihyb3cpCiAgICAgICAgICAgIG5ld19yb3cgPSByb3dbOl0KICAgICAgICAgICAgaWYgdG90YWxfcm93cyA+IHJvd19sZW46CiAgICAgICAgICAgICAgICAjIFJvdyB0b28gc2hvcnQuIFBhZCBpdC4KICAgICAgICAgICAgICAgIG5ld19yb3cgKz0gW3BhZF92YWx1ZV0gKiAodG90YWxfcm93cyAtIHJvd19sZW4pCiAgICAgICAgICAgIG5ld19tYXRyaXggKz0gW25ld19yb3ddCgogICAgICAgIHdoaWxlIGxlbihuZXdfbWF0cml4KSA8IHRvdGFsX3Jvd3M6CiAgICAgICAgICAgIG5ld19tYXRyaXggKz0gW1twYWRfdmFsdWVdICogdG90YWxfcm93c10KCiAgICAgICAgcmV0dXJuIG5ld19tYXRyaXgKCiAgICBkZWYgY29tcHV0ZShzZWxmLCBjb3N0X21hdHJpeDogTWF0cml4KSAtPiBTZXF1ZW5jZVtUdXBsZVtpbnQsIGludF1dOgogICAgICAgICIiIgogICAgICAgIENvbXB1dGUgdGhlIGluZGV4ZXMgZm9yIHRoZSBsb3dlc3QtY29zdCBwYWlyaW5ncyBiZXR3ZWVuIHJvd3MgYW5kCiAgICAgICAgY29sdW1ucyBpbiB0aGUgZGF0YWJhc2UuIFJldHVybnMgYSBsaXN0IG9mIGAocm93LCBjb2x1bW4pYCB0dXBsZXMKICAgICAgICB0aGF0IGNhbiBiZSB1c2VkIHRvIHRyYXZlcnNlIHRoZSBtYXRyaXguCgogICAgICAgICoqV0FSTklORyoqOiBUaGlzIGNvZGUgaGFuZGxlcyBzcXVhcmUgYW5kIHJlY3Rhbmd1bGFyIG1hdHJpY2VzLiBJdAogICAgICAgIGRvZXMgKm5vdCogaGFuZGxlIGlycmVndWxhciBtYXRyaWNlcy4KCiAgICAgICAgKipQYXJhbWV0ZXJzKioKCiAgICAgICAgLSBgY29zdF9tYXRyaXhgIChsaXN0IG9mIGxpc3RzIG9mIG51bWJlcnMpOiBUaGUgY29zdCBtYXRyaXguIElmIHRoaXMKICAgICAgICAgIGNvc3QgbWF0cml4IGlzIG5vdCBzcXVhcmUsIGl0IHdpbGwgYmUgcGFkZGVkIHdpdGggemVyb3MsIHZpYSBhIGNhbGwKICAgICAgICAgIHRvIGBwYWRfbWF0cml4KClgLiAoVGhpcyBtZXRob2QgZG9lcyAqbm90KiBtb2RpZnkgdGhlIGNhbGxlcidzCiAgICAgICAgICBtYXRyaXguIEl0IG9wZXJhdGVzIG9uIGEgY29weSBvZiB0aGUgbWF0cml4LikKCgogICAgICAgICoqUmV0dXJucyoqCgogICAgICAgIEEgbGlzdCBvZiBgKHJvdywgY29sdW1uKWAgdHVwbGVzIHRoYXQgZGVzY3JpYmUgdGhlIGxvd2VzdCBjb3N0IHBhdGgKICAgICAgICB0aHJvdWdoIHRoZSBtYXRyaXgKICAgICAgICAiIiIKICAgICAgICBzZWxmLkMgPSBzZWxmLnBhZF9tYXRyaXgoY29zdF9tYXRyaXgpCiAgICAgICAgc2VsZi5uID0gbGVuKHNlbGYuQykKICAgICAgICBzZWxmLm9yaWdpbmFsX2xlbmd0aCA9IGxlbihjb3N0X21hdHJpeCkKICAgICAgICBzZWxmLm9yaWdpbmFsX3dpZHRoID0gbGVuKGNvc3RfbWF0cml4WzBdKQogICAgICAgIHNlbGYucm93X2NvdmVyZWQgPSBbRmFsc2UgZm9yIGkgaW4gcmFuZ2Uoc2VsZi5uKV0KICAgICAgICBzZWxmLmNvbF9jb3ZlcmVkID0gW0ZhbHNlIGZvciBpIGluIHJhbmdlKHNlbGYubildCiAgICAgICAgc2VsZi5aMF9yID0gMAogICAgICAgIHNlbGYuWjBfYyA9IDAKICAgICAgICBzZWxmLnBhdGggPSBzZWxmLl9fbWFrZV9tYXRyaXgoc2VsZi5uICogMiwgMCkKICAgICAgICBzZWxmLm1hcmtlZCA9IHNlbGYuX19tYWtlX21hdHJpeChzZWxmLm4sIDApCgogICAgICAgIGRvbmUgPSBGYWxzZQogICAgICAgIHN0ZXAgPSAxCgogICAgICAgIHN0ZXBzID0geyAxIDogc2VsZi5fX3N0ZXAxLAogICAgICAgICAgICAgICAgICAyIDogc2VsZi5fX3N0ZXAyLAogICAgICAgICAgICAgICAgICAzIDogc2VsZi5fX3N0ZXAzLAogICAgICAgICAgICAgICAgICA0IDogc2VsZi5fX3N0ZXA0LAogICAgICAgICAgICAgICAgICA1IDogc2VsZi5fX3N0ZXA1LAogICAgICAgICAgICAgICAgICA2IDogc2VsZi5fX3N0ZXA2IH0KCiAgICAgICAgd2hpbGUgbm90IGRvbmU6CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIGZ1bmMgPSBzdGVwc1tzdGVwXQogICAgICAgICAgICAgICAgc3RlcCA9IGZ1bmMoKQogICAgICAgICAgICBleGNlcHQgS2V5RXJyb3I6CiAgICAgICAgICAgICAgICBkb25lID0gVHJ1ZQoKICAgICAgICAjIExvb2sgZm9yIHRoZSBzdGFycmVkIGNvbHVtbnMKICAgICAgICByZXN1bHRzID0gW10KICAgICAgICBmb3IgaSBpbiByYW5nZShzZWxmLm9yaWdpbmFsX2xlbmd0aCk6CiAgICAgICAgICAgIGZvciBqIGluIHJhbmdlKHNlbGYub3JpZ2luYWxfd2lkdGgpOgogICAgICAgICAgICAgICAgaWYgc2VsZi5tYXJrZWRbaV1bal0gPT0gMToKICAgICAgICAgICAgICAgICAgICByZXN1bHRzICs9IFsoaSwgaildCgogICAgICAgIHJldHVybiByZXN1bHRzCgogICAgZGVmIF9fY29weV9tYXRyaXgoc2VsZiwgbWF0cml4OiBNYXRyaXgpIC0+IE1hdHJpeDoKICAgICAgICAiIiJSZXR1cm4gYW4gZXhhY3QgY29weSBvZiB0aGUgc3VwcGxpZWQgbWF0cml4IiIiCiAgICAgICAgcmV0dXJuIGNvcHkuZGVlcGNvcHkobWF0cml4KQoKICAgIGRlZiBfX21ha2VfbWF0cml4KHNlbGYsIG46IGludCwgdmFsOiBBbnlOdW0pIC0+IE1hdHJpeDoKICAgICAgICAiIiJDcmVhdGUgYW4gKm4qeCpuKiBtYXRyaXgsIHBvcHVsYXRpbmcgaXQgd2l0aCB0aGUgc3BlY2lmaWMgdmFsdWUuIiIiCiAgICAgICAgbWF0cml4ID0gW10KICAgICAgICBmb3IgaSBpbiByYW5nZShuKToKICAgICAgICAgICAgbWF0cml4ICs9IFtbdmFsIGZvciBqIGluIHJhbmdlKG4pXV0KICAgICAgICByZXR1cm4gbWF0cml4CgogICAgZGVmIF9fc3RlcDEoc2VsZikgLT4gaW50OgogICAgICAgICIiIgogICAgICAgIEZvciBlYWNoIHJvdyBvZiB0aGUgbWF0cml4LCBmaW5kIHRoZSBzbWFsbGVzdCBlbGVtZW50IGFuZAogICAgICAgIHN1YnRyYWN0IGl0IGZyb20gZXZlcnkgZWxlbWVudCBpbiBpdHMgcm93LiBHbyB0byBTdGVwIDIuCiAgICAgICAgIiIiCiAgICAgICAgQyA9IHNlbGYuQwogICAgICAgIG4gPSBzZWxmLm4KICAgICAgICBmb3IgaSBpbiByYW5nZShuKToKICAgICAgICAgICAgdmFscyA9IFt4IGZvciB4IGluIHNlbGYuQ1tpXSBpZiB4IGlzIG5vdCBESVNBTExPV0VEXQogICAgICAgICAgICBpZiBsZW4odmFscykgPT0gMDoKICAgICAgICAgICAgICAgICMgQWxsIHZhbHVlcyBpbiB0aGlzIHJvdyBhcmUgRElTQUxMT1dFRC4gVGhpcyBtYXRyaXggaXMKICAgICAgICAgICAgICAgICMgdW5zb2x2YWJsZS4KICAgICAgICAgICAgICAgIHJhaXNlIFVuc29sdmFibGVNYXRyaXgoCiAgICAgICAgICAgICAgICAgICAgIlJvdyB7MH0gaXMgZW50aXJlbHkgRElTQUxMT1dFRC4iLmZvcm1hdChpKQogICAgICAgICAgICAgICAgKQogICAgICAgICAgICBtaW52YWwgPSBtaW4odmFscykKICAgICAgICAgICAgIyBGaW5kIHRoZSBtaW5pbXVtIHZhbHVlIGZvciB0aGlzIHJvdyBhbmQgc3VidHJhY3QgdGhhdCBtaW5pbXVtCiAgICAgICAgICAgICMgZnJvbSBldmVyeSBlbGVtZW50IGluIHRoZSByb3cuCiAgICAgICAgICAgIGZvciBqIGluIHJhbmdlKG4pOgogICAgICAgICAgICAgICAgaWYgc2VsZi5DW2ldW2pdIGlzIG5vdCBESVNBTExPV0VEOgogICAgICAgICAgICAgICAgICAgIHNlbGYuQ1tpXVtqXSAtPSBtaW52YWwKICAgICAgICByZXR1cm4gMgoKICAgIGRlZiBfX3N0ZXAyKHNlbGYpIC0+IGludDoKICAgICAgICAiIiIKICAgICAgICBGaW5kIGEgemVybyAoWikgaW4gdGhlIHJlc3VsdGluZyBtYXRyaXguIElmIHRoZXJlIGlzIG5vIHN0YXJyZWQKICAgICAgICB6ZXJvIGluIGl0cyByb3cgb3IgY29sdW1uLCBzdGFyIFouIFJlcGVhdCBmb3IgZWFjaCBlbGVtZW50IGluIHRoZQogICAgICAgIG1hdHJpeC4gR28gdG8gU3RlcCAzLgogICAgICAgICIiIgogICAgICAgIG4gPSBzZWxmLm4KICAgICAgICBmb3IgaSBpbiByYW5nZShuKToKICAgICAgICAgICAgZm9yIGogaW4gcmFuZ2Uobik6CiAgICAgICAgICAgICAgICBpZiAoc2VsZi5DW2ldW2pdID09IDApIGFuZCBcCiAgICAgICAgICAgICAgICAgICAgICAgIChub3Qgc2VsZi5jb2xfY292ZXJlZFtqXSkgYW5kIFwKICAgICAgICAgICAgICAgICAgICAgICAgKG5vdCBzZWxmLnJvd19jb3ZlcmVkW2ldKToKICAgICAgICAgICAgICAgICAgICBzZWxmLm1hcmtlZFtpXVtqXSA9IDEKICAgICAgICAgICAgICAgICAgICBzZWxmLmNvbF9jb3ZlcmVkW2pdID0gVHJ1ZQogICAgICAgICAgICAgICAgICAgIHNlbGYucm93X2NvdmVyZWRbaV0gPSBUcnVlCiAgICAgICAgICAgICAgICAgICAgYnJlYWsKCiAgICAgICAgc2VsZi5fX2NsZWFyX2NvdmVycygpCiAgICAgICAgcmV0dXJuIDMKCiAgICBkZWYgX19zdGVwMyhzZWxmKSAtPiBpbnQ6CiAgICAgICAgIiIiCiAgICAgICAgQ292ZXIgZWFjaCBjb2x1bW4gY29udGFpbmluZyBhIHN0YXJyZWQgemVyby4gSWYgSyBjb2x1bW5zIGFyZQogICAgICAgIGNvdmVyZWQsIHRoZSBzdGFycmVkIHplcm9zIGRlc2NyaWJlIGEgY29tcGxldGUgc2V0IG9mIHVuaXF1ZQogICAgICAgIGFzc2lnbm1lbnRzLiBJbiB0aGlzIGNhc2UsIEdvIHRvIERPTkUsIG90aGVyd2lzZSwgR28gdG8gU3RlcCA0LgogICAgICAgICIiIgogICAgICAgIG4gPSBzZWxmLm4KICAgICAgICBjb3VudCA9IDAKICAgICAgICBmb3IgaSBpbiByYW5nZShuKToKICAgICAgICAgICAgZm9yIGogaW4gcmFuZ2Uobik6CiAgICAgICAgICAgICAgICBpZiBzZWxmLm1hcmtlZFtpXVtqXSA9PSAxIGFuZCBub3Qgc2VsZi5jb2xfY292ZXJlZFtqXToKICAgICAgICAgICAgICAgICAgICBzZWxmLmNvbF9jb3ZlcmVkW2pdID0gVHJ1ZQogICAgICAgICAgICAgICAgICAgIGNvdW50ICs9IDEKCiAgICAgICAgaWYgY291bnQgPj0gbjoKICAgICAgICAgICAgc3RlcCA9IDcgIyBkb25lCiAgICAgICAgZWxzZToKICAgICAgICAgICAgc3RlcCA9IDQKCiAgICAgICAgcmV0dXJuIHN0ZXAKCiAgICBkZWYgX19zdGVwNChzZWxmKSAtPiBpbnQ6CiAgICAgICAgIiIiCiAgICAgICAgRmluZCBhIG5vbmNvdmVyZWQgemVybyBhbmQgcHJpbWUgaXQuIElmIHRoZXJlIGlzIG5vIHN0YXJyZWQgemVybwogICAgICAgIGluIHRoZSByb3cgY29udGFpbmluZyB0aGlzIHByaW1lZCB6ZXJvLCBHbyB0byBTdGVwIDUuIE90aGVyd2lzZSwKICAgICAgICBjb3ZlciB0aGlzIHJvdyBhbmQgdW5jb3ZlciB0aGUgY29sdW1uIGNvbnRhaW5pbmcgdGhlIHN0YXJyZWQKICAgICAgICB6ZXJvLiBDb250aW51ZSBpbiB0aGlzIG1hbm5lciB1bnRpbCB0aGVyZSBhcmUgbm8gdW5jb3ZlcmVkIHplcm9zCiAgICAgICAgbGVmdC4gU2F2ZSB0aGUgc21hbGxlc3QgdW5jb3ZlcmVkIHZhbHVlIGFuZCBHbyB0byBTdGVwIDYuCiAgICAgICAgIiIiCiAgICAgICAgc3RlcCA9IDAKICAgICAgICBkb25lID0gRmFsc2UKICAgICAgICByb3cgPSAwCiAgICAgICAgY29sID0gMAogICAgICAgIHN0YXJfY29sID0gLTEKICAgICAgICB3aGlsZSBub3QgZG9uZToKICAgICAgICAgICAgKHJvdywgY29sKSA9IHNlbGYuX19maW5kX2FfemVybyhyb3csIGNvbCkKICAgICAgICAgICAgaWYgcm93IDwgMDoKICAgICAgICAgICAgICAgIGRvbmUgPSBUcnVlCiAgICAgICAgICAgICAgICBzdGVwID0gNgogICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgc2VsZi5tYXJrZWRbcm93XVtjb2xdID0gMgogICAgICAgICAgICAgICAgc3Rhcl9jb2wgPSBzZWxmLl9fZmluZF9zdGFyX2luX3Jvdyhyb3cpCiAgICAgICAgICAgICAgICBpZiBzdGFyX2NvbCA+PSAwOgogICAgICAgICAgICAgICAgICAgIGNvbCA9IHN0YXJfY29sCiAgICAgICAgICAgICAgICAgICAgc2VsZi5yb3dfY292ZXJlZFtyb3ddID0gVHJ1ZQogICAgICAgICAgICAgICAgICAgIHNlbGYuY29sX2NvdmVyZWRbY29sXSA9IEZhbHNlCiAgICAgICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgICAgIGRvbmUgPSBUcnVlCiAgICAgICAgICAgICAgICAgICAgc2VsZi5aMF9yID0gcm93CiAgICAgICAgICAgICAgICAgICAgc2VsZi5aMF9jID0gY29sCiAgICAgICAgICAgICAgICAgICAgc3RlcCA9IDUKCiAgICAgICAgcmV0dXJuIHN0ZXAKCiAgICBkZWYgX19zdGVwNShzZWxmKSAtPiBpbnQ6CiAgICAgICAgIiIiCiAgICAgICAgQ29uc3RydWN0IGEgc2VyaWVzIG9mIGFsdGVybmF0aW5nIHByaW1lZCBhbmQgc3RhcnJlZCB6ZXJvcyBhcwogICAgICAgIGZvbGxvd3MuIExldCBaMCByZXByZXNlbnQgdGhlIHVuY292ZXJlZCBwcmltZWQgemVybyBmb3VuZCBpbiBTdGVwIDQuCiAgICAgICAgTGV0IFoxIGRlbm90ZSB0aGUgc3RhcnJlZCB6ZXJvIGluIHRoZSBjb2x1bW4gb2YgWjAgKGlmIGFueSkuCiAgICAgICAgTGV0IFoyIGRlbm90ZSB0aGUgcHJpbWVkIHplcm8gaW4gdGhlIHJvdyBvZiBaMSAodGhlcmUgd2lsbCBhbHdheXMKICAgICAgICBiZSBvbmUpLiBDb250aW51ZSB1bnRpbCB0aGUgc2VyaWVzIHRlcm1pbmF0ZXMgYXQgYSBwcmltZWQgemVybwogICAgICAgIHRoYXQgaGFzIG5vIHN0YXJyZWQgemVybyBpbiBpdHMgY29sdW1uLiBVbnN0YXIgZWFjaCBzdGFycmVkIHplcm8KICAgICAgICBvZiB0aGUgc2VyaWVzLCBzdGFyIGVhY2ggcHJpbWVkIHplcm8gb2YgdGhlIHNlcmllcywgZXJhc2UgYWxsCiAgICAgICAgcHJpbWVzIGFuZCB1bmNvdmVyIGV2ZXJ5IGxpbmUgaW4gdGhlIG1hdHJpeC4gUmV0dXJuIHRvIFN0ZXAgMwogICAgICAgICIiIgogICAgICAgIGNvdW50ID0gMAogICAgICAgIHBhdGggPSBzZWxmLnBhdGgKICAgICAgICBwYXRoW2NvdW50XVswXSA9IHNlbGYuWjBfcgogICAgICAgIHBhdGhbY291bnRdWzFdID0gc2VsZi5aMF9jCiAgICAgICAgZG9uZSA9IEZhbHNlCiAgICAgICAgd2hpbGUgbm90IGRvbmU6CiAgICAgICAgICAgIHJvdyA9IHNlbGYuX19maW5kX3N0YXJfaW5fY29sKHBhdGhbY291bnRdWzFdKQogICAgICAgICAgICBpZiByb3cgPj0gMDoKICAgICAgICAgICAgICAgIGNvdW50ICs9IDEKICAgICAgICAgICAgICAgIHBhdGhbY291bnRdWzBdID0gcm93CiAgICAgICAgICAgICAgICBwYXRoW2NvdW50XVsxXSA9IHBhdGhbY291bnQtMV1bMV0KICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGRvbmUgPSBUcnVlCgogICAgICAgICAgICBpZiBub3QgZG9uZToKICAgICAgICAgICAgICAgIGNvbCA9IHNlbGYuX19maW5kX3ByaW1lX2luX3JvdyhwYXRoW2NvdW50XVswXSkKICAgICAgICAgICAgICAgIGNvdW50ICs9IDEKICAgICAgICAgICAgICAgIHBhdGhbY291bnRdWzBdID0gcGF0aFtjb3VudC0xXVswXQogICAgICAgICAgICAgICAgcGF0aFtjb3VudF1bMV0gPSBjb2wKCiAgICAgICAgc2VsZi5fX2NvbnZlcnRfcGF0aChwYXRoLCBjb3VudCkKICAgICAgICBzZWxmLl9fY2xlYXJfY292ZXJzKCkKICAgICAgICBzZWxmLl9fZXJhc2VfcHJpbWVzKCkKICAgICAgICByZXR1cm4gMwoKICAgIGRlZiBfX3N0ZXA2KHNlbGYpIC0+IGludDoKICAgICAgICAiIiIKICAgICAgICBBZGQgdGhlIHZhbHVlIGZvdW5kIGluIFN0ZXAgNCB0byBldmVyeSBlbGVtZW50IG9mIGVhY2ggY292ZXJlZAogICAgICAgIHJvdywgYW5kIHN1YnRyYWN0IGl0IGZyb20gZXZlcnkgZWxlbWVudCBvZiBlYWNoIHVuY292ZXJlZCBjb2x1bW4uCiAgICAgICAgUmV0dXJuIHRvIFN0ZXAgNCB3aXRob3V0IGFsdGVyaW5nIGFueSBzdGFycywgcHJpbWVzLCBvciBjb3ZlcmVkCiAgICAgICAgbGluZXMuCiAgICAgICAgIiIiCiAgICAgICAgbWludmFsID0gc2VsZi5fX2ZpbmRfc21hbGxlc3QoKQogICAgICAgIGV2ZW50cyA9IDAgIyB0cmFjayBhY3R1YWwgY2hhbmdlcyB0byBtYXRyaXgKICAgICAgICBmb3IgaSBpbiByYW5nZShzZWxmLm4pOgogICAgICAgICAgICBmb3IgaiBpbiByYW5nZShzZWxmLm4pOgogICAgICAgICAgICAgICAgaWYgc2VsZi5DW2ldW2pdIGlzIERJU0FMTE9XRUQ6CiAgICAgICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgICAgIGlmIHNlbGYucm93X2NvdmVyZWRbaV06CiAgICAgICAgICAgICAgICAgICAgc2VsZi5DW2ldW2pdICs9IG1pbnZhbAogICAgICAgICAgICAgICAgICAgIGV2ZW50cyArPSAxCiAgICAgICAgICAgICAgICBpZiBub3Qgc2VsZi5jb2xfY292ZXJlZFtqXToKICAgICAgICAgICAgICAgICAgICBzZWxmLkNbaV1bal0gLT0gbWludmFsCiAgICAgICAgICAgICAgICAgICAgZXZlbnRzICs9IDEKICAgICAgICAgICAgICAgIGlmIHNlbGYucm93X2NvdmVyZWRbaV0gYW5kIG5vdCBzZWxmLmNvbF9jb3ZlcmVkW2pdOgogICAgICAgICAgICAgICAgICAgIGV2ZW50cyAtPSAyICMgY2hhbmdlIHJldmVyc2VkLCBubyByZWFsIGRpZmZlcmVuY2UKICAgICAgICBpZiAoZXZlbnRzID09IDApOgogICAgICAgICAgICByYWlzZSBVbnNvbHZhYmxlTWF0cml4KCJNYXRyaXggY2Fubm90IGJlIHNvbHZlZCEiKQogICAgICAgIHJldHVybiA0CgogICAgZGVmIF9fZmluZF9zbWFsbGVzdChzZWxmKSAtPiBBbnlOdW06CiAgICAgICAgIiIiRmluZCB0aGUgc21hbGxlc3QgdW5jb3ZlcmVkIHZhbHVlIGluIHRoZSBtYXRyaXguIiIiCiAgICAgICAgbWludmFsID0gc3lzLm1heHNpemUKICAgICAgICBmb3IgaSBpbiByYW5nZShzZWxmLm4pOgogICAgICAgICAgICBmb3IgaiBpbiByYW5nZShzZWxmLm4pOgogICAgICAgICAgICAgICAgaWYgKG5vdCBzZWxmLnJvd19jb3ZlcmVkW2ldKSBhbmQgKG5vdCBzZWxmLmNvbF9jb3ZlcmVkW2pdKToKICAgICAgICAgICAgICAgICAgICBpZiBzZWxmLkNbaV1bal0gaXMgbm90IERJU0FMTE9XRUQgYW5kIG1pbnZhbCA+IHNlbGYuQ1tpXVtqXToKICAgICAgICAgICAgICAgICAgICAgICAgbWludmFsID0gc2VsZi5DW2ldW2pdCiAgICAgICAgcmV0dXJuIG1pbnZhbAoKCiAgICBkZWYgX19maW5kX2FfemVybyhzZWxmLCBpMDogaW50ID0gMCwgajA6IGludCA9IDApIC0+IFR1cGxlW2ludCwgaW50XToKICAgICAgICAiIiJGaW5kIHRoZSBmaXJzdCB1bmNvdmVyZWQgZWxlbWVudCB3aXRoIHZhbHVlIDAiIiIKICAgICAgICByb3cgPSAtMQogICAgICAgIGNvbCA9IC0xCiAgICAgICAgaSA9IGkwCiAgICAgICAgbiA9IHNlbGYubgogICAgICAgIGRvbmUgPSBGYWxzZQoKICAgICAgICB3aGlsZSBub3QgZG9uZToKICAgICAgICAgICAgaiA9IGowCiAgICAgICAgICAgIHdoaWxlIFRydWU6CiAgICAgICAgICAgICAgICBpZiAoc2VsZi5DW2ldW2pdID09IDApIGFuZCBcCiAgICAgICAgICAgICAgICAgICAgICAgIChub3Qgc2VsZi5yb3dfY292ZXJlZFtpXSkgYW5kIFwKICAgICAgICAgICAgICAgICAgICAgICAgKG5vdCBzZWxmLmNvbF9jb3ZlcmVkW2pdKToKICAgICAgICAgICAgICAgICAgICByb3cgPSBpCiAgICAgICAgICAgICAgICAgICAgY29sID0gagogICAgICAgICAgICAgICAgICAgIGRvbmUgPSBUcnVlCiAgICAgICAgICAgICAgICBqID0gKGogKyAxKSAlIG4KICAgICAgICAgICAgICAgIGlmIGogPT0gajA6CiAgICAgICAgICAgICAgICAgICAgYnJlYWsKICAgICAgICAgICAgaSA9IChpICsgMSkgJSBuCiAgICAgICAgICAgIGlmIGkgPT0gaTA6CiAgICAgICAgICAgICAgICBkb25lID0gVHJ1ZQoKICAgICAgICByZXR1cm4gKHJvdywgY29sKQoKICAgIGRlZiBfX2ZpbmRfc3Rhcl9pbl9yb3coc2VsZiwgcm93OiBTZXF1ZW5jZVtBbnlOdW1dKSAtPiBpbnQ6CiAgICAgICAgIiIiCiAgICAgICAgRmluZCB0aGUgZmlyc3Qgc3RhcnJlZCBlbGVtZW50IGluIHRoZSBzcGVjaWZpZWQgcm93LiBSZXR1cm5zCiAgICAgICAgdGhlIGNvbHVtbiBpbmRleCwgb3IgLTEgaWYgbm8gc3RhcnJlZCBlbGVtZW50IHdhcyBmb3VuZC4KICAgICAgICAiIiIKICAgICAgICBjb2wgPSAtMQogICAgICAgIGZvciBqIGluIHJhbmdlKHNlbGYubik6CiAgICAgICAgICAgIGlmIHNlbGYubWFya2VkW3Jvd11bal0gPT0gMToKICAgICAgICAgICAgICAgIGNvbCA9IGoKICAgICAgICAgICAgICAgIGJyZWFrCgogICAgICAgIHJldHVybiBjb2wKCiAgICBkZWYgX19maW5kX3N0YXJfaW5fY29sKHNlbGYsIGNvbDogU2VxdWVuY2VbQW55TnVtXSkgLT4gaW50OgogICAgICAgICIiIgogICAgICAgIEZpbmQgdGhlIGZpcnN0IHN0YXJyZWQgZWxlbWVudCBpbiB0aGUgc3BlY2lmaWVkIHJvdy4gUmV0dXJucwogICAgICAgIHRoZSByb3cgaW5kZXgsIG9yIC0xIGlmIG5vIHN0YXJyZWQgZWxlbWVudCB3YXMgZm91bmQuCiAgICAgICAgIiIiCiAgICAgICAgcm93ID0gLTEKICAgICAgICBmb3IgaSBpbiByYW5nZShzZWxmLm4pOgogICAgICAgICAgICBpZiBzZWxmLm1hcmtlZFtpXVtjb2xdID09IDE6CiAgICAgICAgICAgICAgICByb3cgPSBpCiAgICAgICAgICAgICAgICBicmVhawoKICAgICAgICByZXR1cm4gcm93CgogICAgZGVmIF9fZmluZF9wcmltZV9pbl9yb3coc2VsZiwgcm93KSAtPiBpbnQ6CiAgICAgICAgIiIiCiAgICAgICAgRmluZCB0aGUgZmlyc3QgcHJpbWUgZWxlbWVudCBpbiB0aGUgc3BlY2lmaWVkIHJvdy4gUmV0dXJucwogICAgICAgIHRoZSBjb2x1bW4gaW5kZXgsIG9yIC0xIGlmIG5vIHN0YXJyZWQgZWxlbWVudCB3YXMgZm91bmQuCiAgICAgICAgIiIiCiAgICAgICAgY29sID0gLTEKICAgICAgICBmb3IgaiBpbiByYW5nZShzZWxmLm4pOgogICAgICAgICAgICBpZiBzZWxmLm1hcmtlZFtyb3ddW2pdID09IDI6CiAgICAgICAgICAgICAgICBjb2wgPSBqCiAgICAgICAgICAgICAgICBicmVhawoKICAgICAgICByZXR1cm4gY29sCgogICAgZGVmIF9fY29udmVydF9wYXRoKHNlbGYsCiAgICAgICAgICAgICAgICAgICAgICAgcGF0aDogU2VxdWVuY2VbU2VxdWVuY2VbaW50XV0sCiAgICAgICAgICAgICAgICAgICAgICAgY291bnQ6IGludCkgLT4gTm9uZToKICAgICAgICBmb3IgaSBpbiByYW5nZShjb3VudCsxKToKICAgICAgICAgICAgaWYgc2VsZi5tYXJrZWRbcGF0aFtpXVswXV1bcGF0aFtpXVsxXV0gPT0gMToKICAgICAgICAgICAgICAgIHNlbGYubWFya2VkW3BhdGhbaV1bMF1dW3BhdGhbaV1bMV1dID0gMAogICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgc2VsZi5tYXJrZWRbcGF0aFtpXVswXV1bcGF0aFtpXVsxXV0gPSAxCgogICAgZGVmIF9fY2xlYXJfY292ZXJzKHNlbGYpIC0+IE5vbmU6CiAgICAgICAgIiIiQ2xlYXIgYWxsIGNvdmVyZWQgbWF0cml4IGNlbGxzIiIiCiAgICAgICAgZm9yIGkgaW4gcmFuZ2Uoc2VsZi5uKToKICAgICAgICAgICAgc2VsZi5yb3dfY292ZXJlZFtpXSA9IEZhbHNlCiAgICAgICAgICAgIHNlbGYuY29sX2NvdmVyZWRbaV0gPSBGYWxzZQoKICAgIGRlZiBfX2VyYXNlX3ByaW1lcyhzZWxmKSAtPiBOb25lOgogICAgICAgICIiIkVyYXNlIGFsbCBwcmltZSBtYXJraW5ncyIiIgogICAgICAgIGZvciBpIGluIHJhbmdlKHNlbGYubik6CiAgICAgICAgICAgIGZvciBqIGluIHJhbmdlKHNlbGYubik6CiAgICAgICAgICAgICAgICBpZiBzZWxmLm1hcmtlZFtpXVtqXSA9PSAyOgogICAgICAgICAgICAgICAgICAgIHNlbGYubWFya2VkW2ldW2pdID0gMAoKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KIyBGdW5jdGlvbnMKIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCmRlZiBtYWtlX2Nvc3RfbWF0cml4KAogICAgICAgIHByb2ZpdF9tYXRyaXg6IE1hdHJpeCwKICAgICAgICBpbnZlcnNpb25fZnVuY3Rpb246IE9wdGlvbmFsW0NhbGxhYmxlW1tBbnlOdW1dLCBBbnlOdW1dXSA9IE5vbmUKICAgICkgLT4gTWF0cml4OgogICAgIiIiCiAgICBDcmVhdGUgYSBjb3N0IG1hdHJpeCBmcm9tIGEgcHJvZml0IG1hdHJpeCBieSBjYWxsaW5nIGBpbnZlcnNpb25fZnVuY3Rpb24oKWAKICAgIHRvIGludmVydCBlYWNoIHZhbHVlLiBUaGUgaW52ZXJzaW9uIGZ1bmN0aW9uIG11c3QgdGFrZSBvbmUgbnVtZXJpYyBhcmd1bWVudAogICAgKG9mIGFueSB0eXBlKSBhbmQgcmV0dXJuIGFub3RoZXIgbnVtZXJpYyBhcmd1bWVudCB3aGljaCBpcyBwcmVzdW1lZCB0byBiZQogICAgdGhlIGNvc3QgaW52ZXJzZSBvZiB0aGUgb3JpZ2luYWwgcHJvZml0IHZhbHVlLiBJZiB0aGUgaW52ZXJzaW9uIGZ1bmN0aW9uCiAgICBpcyBub3QgcHJvdmlkZWQsIGEgZ2l2ZW4gY2VsbCdzIGludmVydGVkIHZhbHVlIGlzIGNhbGN1bGF0ZWQgYXMKICAgIGBtYXgobWF0cml4KSAtIHZhbHVlYC4KCiAgICBUaGlzIGlzIGEgc3RhdGljIG1ldGhvZC4gQ2FsbCBpdCBsaWtlIHRoaXM6CgogICAgICAgIGZyb20gbXVua3JlcyBpbXBvcnQgTXVua3JlcwogICAgICAgIGNvc3RfbWF0cml4ID0gTXVua3Jlcy5tYWtlX2Nvc3RfbWF0cml4KG1hdHJpeCwgaW52ZXJzaW9uX2Z1bmMpCgogICAgRm9yIGV4YW1wbGU6CgogICAgICAgIGZyb20gbXVua3JlcyBpbXBvcnQgTXVua3JlcwogICAgICAgIGNvc3RfbWF0cml4ID0gTXVua3Jlcy5tYWtlX2Nvc3RfbWF0cml4KG1hdHJpeCwgbGFtYmRhIHggOiBzeXMubWF4c2l6ZSAtIHgpCgogICAgKipQYXJhbWV0ZXJzKioKCiAgICAtIGBwcm9maXRfbWF0cml4YCAobGlzdCBvZiBsaXN0cyBvZiBudW1iZXJzKTogVGhlIG1hdHJpeCB0byBjb252ZXJ0IGZyb20KICAgICAgIHByb2ZpdCB0byBjb3N0IHZhbHVlcy4KICAgIC0gYGludmVyc2lvbl9mdW5jdGlvbmAgKGBmdW5jdGlvbmApOiBUaGUgZnVuY3Rpb24gdG8gdXNlIHRvIGludmVydCBlYWNoCiAgICAgICBlbnRyeSBpbiB0aGUgcHJvZml0IG1hdHJpeC4KCiAgICAqKlJldHVybnMqKgoKICAgIEEgbmV3IG1hdHJpeCByZXByZXNlbnRpbmcgdGhlIGludmVyc2lvbiBvZiBgcHJvZml4X21hdHJpeGAuCiAgICAiIiIKICAgIGlmIG5vdCBpbnZlcnNpb25fZnVuY3Rpb246CiAgICAgIG1heGltdW0gPSBtYXgobWF4KHJvdykgZm9yIHJvdyBpbiBwcm9maXRfbWF0cml4KQogICAgICBpbnZlcnNpb25fZnVuY3Rpb24gPSBsYW1iZGEgeDogbWF4aW11bSAtIHgKCiAgICBjb3N0X21hdHJpeCA9IFtdCiAgICBmb3Igcm93IGluIHByb2ZpdF9tYXRyaXg6CiAgICAgICAgY29zdF9tYXRyaXguYXBwZW5kKFtpbnZlcnNpb25fZnVuY3Rpb24odmFsdWUpIGZvciB2YWx1ZSBpbiByb3ddKQogICAgcmV0dXJuIGNvc3RfbWF0cml4CgpkZWYgcHJpbnRfbWF0cml4KG1hdHJpeDogTWF0cml4LCBtc2c6IE9wdGlvbmFsW3N0cl0gPSBOb25lKSAtPiBOb25lOgogICAgIiIiCiAgICBDb252ZW5pZW5jZSBmdW5jdGlvbjogRGlzcGxheXMgdGhlIGNvbnRlbnRzIG9mIGEgbWF0cml4LgoKICAgICoqUGFyYW1ldGVycyoqCgogICAgLSBgbWF0cml4YCAobGlzdCBvZiBsaXN0cyBvZiBudW1iZXJzKTogVGhlIG1hdHJpeCB0byBwcmludAogICAgLSBgbXNnYCAoYHN0cmApOiBPcHRpb25hbCBtZXNzYWdlIHRvIHByaW50IGJlZm9yZSBkaXNwbGF5aW5nIHRoZSBtYXRyaXgKICAgICIiIgogICAgaW1wb3J0IG1hdGgKCiAgICBpZiBtc2cgaXMgbm90IE5vbmU6CiAgICAgICAgcHJpbnQobXNnKQoKICAgICMgQ2FsY3VsYXRlIHRoZSBhcHByb3ByaWF0ZSBmb3JtYXQgd2lkdGguCiAgICB3aWR0aCA9IDAKICAgIGZvciByb3cgaW4gbWF0cml4OgogICAgICAgIGZvciB2YWwgaW4gcm93OgogICAgICAgICAgICBpZiB2YWwgaXMgRElTQUxMT1dFRDoKICAgICAgICAgICAgICAgIHZhbCA9IERJU0FMTE9XRURfUFJJTlRWQUwKICAgICAgICAgICAgd2lkdGggPSBtYXgod2lkdGgsIGxlbihzdHIodmFsKSkpCgogICAgIyBNYWtlIHRoZSBmb3JtYXQgc3RyaW5nCiAgICBmb3JtYXQgPSAoJyUlJWQnICUgd2lkdGgpCgogICAgIyBQcmludCB0aGUgbWF0cml4CiAgICBmb3Igcm93IGluIG1hdHJpeDoKICAgICAgICBzZXAgPSAnWycKICAgICAgICBmb3IgdmFsIGluIHJvdzoKICAgICAgICAgICAgaWYgdmFsIGlzIERJU0FMTE9XRUQ6CiAgICAgICAgICAgICAgICB2YWwgPSBESVNBTExPV0VEX1BSSU5UVkFMCiAgICAgICAgICAgIGZvcm1hdHRlZCA9ICgoZm9ybWF0ICsgJ3MnKSAlIHZhbCkKICAgICAgICAgICAgc3lzLnN0ZG91dC53cml0ZShzZXAgKyBmb3JtYXR0ZWQpCiAgICAgICAgICAgIHNlcCA9ICcsICcKICAgICAgICBzeXMuc3Rkb3V0LndyaXRlKCddXG4nKQo=</file>
+    </testcases>
+  </question>
+
+<!-- question: 680036  -->
+  <question type="coderunner">
+    <name>
+      <text>PROTOTYPE_python_refute</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">This is the Refute template.</p>
+<p dir="ltr" style="text-align: left;">Global extra expects a gapfiller template with exactly three fields for `given`, `then`, `but` test cases respectively. For example:</p>
+<p><code></code></p>
+<pre><code>Calling no_even_pairs({[16]})
+Should return: `{[8]}`
+But the above function actually returns: `{[8]}`</code></pre>
+<p>Test cases expects exactly one test case in the first slot, with `{[given]}`, `{[then]}`, `{[but]}` replacement fields. For example:</p>
+<p><code></code></p>
+<pre><code>def buggy(data):
+	for i in range(len(data) - 1):
+		if (data[i - 1] + data[i]) % 2 == 0:
+			return False
+	return True
+
+def correct(data):
+	for i in range(len(data) - 1):
+		if (data[i] + data[i + 1]) % 2 == 0:
+			return False
+	return True
+
+assert correct({[given]}) == {[then]}
+assert buggy({[given]}) == {[but]}</code></pre>
+<p>These fields are filled with the values the students type in, and the test case is then executed. If the test case exits without error, the case is correct. Otherwise, the question is incorrect with a message indicating the error. If an assertion error is raised, the student is informed that their cases are incorrect. Otherwise, they are told there was an error.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python_refute</coderunnertype>
+    <prototypetype>2</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>3</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>Calling no_even_pairs({[16]})
+Should return: `{[8]}`
+But the above function actually returns: `{[8]}`</globalextra>
+    <useace>1</useace>
+    <resultcolumns></resultcolumns>
+    <template><![CDATA[import json
+import sys
+from random import choices
+from string import ascii_uppercase, digits
+from subprocess import check_output, STDOUT, CalledProcessError
+
+
+RAW_TESTCASES = json.loads("""{{ TESTCASES | json_encode | e('py') }}""")
+RAW_ANSWER = json.loads("""{{ STUDENT_ANSWER | e('py') }}""")
+RAW_PARAMS = json.loads("""{{ QUESTION.parameters | json_encode | e('py') }}""")
+
+
+class TestCase:
+    def __init__(self, code: str, given, then, but):
+        self.secret = ''.join(choices(ascii_uppercase + digits, k=32))
+        self.code = (
+                code
+                .replace("{[given]}", given)
+                .replace("{[then]}", then)
+                .replace("{[but]}", but)
+                + f"""\n\n\nprint("{self.secret}", end='')"""
+        )
+
+    def run_raw(self):
+        with open("prog.py", "w") as src:
+            print(test.code, file=src)
+        try:
+            cmd = ["python3", "prog.py"]
+            output = check_output(cmd, stderr=STDOUT, universal_newlines=True)
+        except CalledProcessError as e:
+            return 1, e.output
+        else:
+            return 0, output
+
+    def run(self):
+        status, output = self.run_raw()
+        if status == 1 and output and output.strip().endswith("AssertionError"):
+            return "AssertionError"
+        elif status == 1 or not output.strip().endswith(test.secret):
+            return "RuntimeError"
+        else:
+            return "Success"
+
+
+def dump_output_and_quit(correct: bool, epilogue: str = "", exit_code: int = 0):
+    banner = f"<h3>{'Success!' if correct else 'Incorrect'}</h3>"
+    print(json.dumps({
+        'fraction': int(correct),
+        'testresults': [],
+        'epiloguehtml': banner + epilogue,
+        'columnformats': [],
+        'showdifferences': False
+    }))
+    sys.exit(exit_code)
+
+
+given, then, but = RAW_ANSWER
+test = TestCase(RAW_TESTCASES[0]["testcode"], given, then, but)
+
+if then.strip() == but.strip():
+    dump_output_and_quit(
+        False,
+        "The expected and actual cases need to be different to reveal any bugs",
+    )
+
+match test.run():
+    case "AssertionError":
+        dump_output_and_quit(False, "Your given or example cases are incorrect")
+    case "RuntimeError":
+        dump_output_and_quit(False, "Your test case has caused an error", 1)
+    case "Success":
+        dump_output_and_quit(True)
+]]></template>
+    <iscombinatortemplate>1</iscombinatortemplate>
+    <allowmultiplestdins>0</allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre><![CDATA[|#<ab@17943918#@>#\n|ms]]></testsplitterre>
+    <language>python3</language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader>TemplateGrader</grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin>gapfiller</uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+    </testcases>
+  </question>
+
+<!-- question: 681794  -->
+  <question type="coderunner">
+    <name>
+      <text>Refute — With Index</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">A classmate has written the following function:</p>
+<blockquote>
+    <pre>def with_index(data):
+    result = []
+    for value in data:
+        pair = (data.index(value), value)
+        result.append(pair)
+    return result</pre>
+</blockquote>
+<p>They claim the function takes a list of data and returns a list of tuples where each tuple contains the index of each value from the parameter list and the value itself: <code>(index, value)</code>. For example:</p>
+<blockquote>
+    <pre>with_index(["a", "b", "c"])</pre>
+</blockquote>
+<p>Returns:</p>
+<blockquote>
+    <pre>[(0, "a"), (1, "b"), (2, "c")]</pre>
+</blockquote>
+<p>There is a bug in their code – write a test case that reveals the bug.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python_refute</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>3</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>Calling with_index({[28]})
+Should return: {[56]}
+But the above function actually returns: {[56]}</globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text>def buggy(data):
+    result = []
+    for value in data:
+        pair = (data.index(value), value)
+        result.append(pair)
+    return result
+
+def correct(data):
+    result = []
+    for i in range(len(data)):
+        pair = (i, data[i])
+        result.append(pair)
+    return result
+
+assert correct({[given]}) == {[then]}
+assert buggy({[given]}) == {[but]}</text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 680067  -->
+  <question type="coderunner">
+    <name>
+      <text>refute: bring umbrella</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Your classmate wrote the following function that has three boolean parameters to help them decide whether they should take an umbrella with
+them:</p>
+<blockquote>
+    <pre>def take_umbrella(is_cloudy, is_raining, going_out):
+    if is_cloudy or is_raining and going_out:
+        return "Take an umbrella"
+    else:
+        return "Don't take an umbrella"</pre>
+</blockquote>
+<p></p>
+<p>Your classmate will bring an umbrella with them if:<br></p>
+<ul>
+    <li>It is cloudy, or it is raining<br></li>
+    <li>But only if they are going out for the day<br></li>
+</ul>
+<p>In all other cases, they will not take an umbrella with them.</p>
+<p></p>
+<p>There is a bug in their code – write a test case that reveals the bug. Remember to include quote marks around any strings.</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python_refute</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>3</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>Calling `take_umbrella({[24]})`
+Should return: {[25]}
+But the above function actually returns: {[25]}</globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text><![CDATA[def buggy(is_cloudy, is_raining, going_out):
+    if is_cloudy or is_raining and going_out:
+        return "Take an umbrella"
+    else:
+        return "Don't take an umbrella"
+
+def correct(is_cloudy, is_raining, going_out):
+    if (is_cloudy or is_raining) and going_out:
+        return "Take an umbrella"
+    else:
+        return "Don't take an umbrella"
+
+assert correct({[given]}).lower() == {[then]}.lower()
+assert buggy({[given]}).lower() == {[but]}.lower()]]></text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 680038  -->
+  <question type="coderunner">
+    <name>
+      <text>refute: no pairs over 5</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">A classmate has written the following function:</p>
+<blockquote>
+    <pre>def no_large_pairs(data):
+    for i in range(len(data)):
+        if data[i - 1] + data[i] &gt; 5:
+            return False
+    return True</pre>
+</blockquote>
+<p>They claim the function returns <code>True</code> if there is no adjacent pair of numbers that sum to a value greater than five, and <code>False</code> otherwise.</p><p>There is a bug in their code – write a test case that reveals the bug.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python_refute</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>3</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>Calling no_large_pairs({[16]})
+Should return: {[8]}
+But the above function actually returns: {[8]}</globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="0" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text><![CDATA[def buggy(data):
+    for i in range(len(data)):
+        if data[i - 1] + data[i] > 5:
+            return False
+    return True
+
+def correct(data):
+    for i in range(len(data) - 1):
+        if data[i] + data[i + 1] > 5:
+            return False
+    return True
+
+assert correct({[given]}) == {[then]}
+assert buggy({[given]}) == {[but]}]]></text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text></text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 681786  -->
+  <question type="coderunner">
+    <name>
+      <text>Reverse Trace — Gobble List</text>
+    </name>
+    <questiontext format="html">
+      <text>Complete the following code to get the expected output in the example box below.</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3_html_gapfiller-1</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>11</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>def gobble(data):
+    result = []
+    for i in range(0, len(data) - 1, 2):
+        chomp = data[i] + data[i + 1]
+        result.append(chomp)
+    return result
+
+
+values = {[42]}
+result = gobble(values)
+print(result)</globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>[7, 5, 3]</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+<!-- question: 680039  -->
+  <question type="coderunner">
+    <name>
+      <text>Reverse Trace: flip evens in list</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;">Complete the following code to get the expected output in the example box below.<br></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <coderunnertype>python3_html_gapfiller-1</coderunnertype>
+    <prototypetype>0</prototypetype>
+    <allornothing>1</allornothing>
+    <penaltyregime>0</penaltyregime>
+    <precheck>0</precheck>
+    <hidecheck>0</hidecheck>
+    <showsource>0</showsource>
+    <answerboxlines>5</answerboxlines>
+    <answerboxcolumns>100</answerboxcolumns>
+    <answerpreload></answerpreload>
+    <globalextra>def munge(data):
+    for i in range(len(data) // 2):
+        if i % 2 == 0:
+            data[i], data[-i - 1] = data[-i - 1], data[i]
+
+
+data = {[45]}
+munge(data)
+print(data)</globalextra>
+    <useace></useace>
+    <resultcolumns></resultcolumns>
+    <template></template>
+    <iscombinatortemplate></iscombinatortemplate>
+    <allowmultiplestdins></allowmultiplestdins>
+    <answer></answer>
+    <validateonsave>1</validateonsave>
+    <testsplitterre></testsplitterre>
+    <language></language>
+    <acelang></acelang>
+    <sandbox></sandbox>
+    <grader></grader>
+    <cputimelimitsecs></cputimelimitsecs>
+    <memlimitmb></memlimitmb>
+    <sandboxparams></sandboxparams>
+    <templateparams></templateparams>
+    <hoisttemplateparams>1</hoisttemplateparams>
+    <templateparamslang>None</templateparamslang>
+    <templateparamsevalpertry>0</templateparamsevalpertry>
+    <templateparamsevald>{}</templateparamsevald>
+    <twigall>0</twigall>
+    <uiplugin></uiplugin>
+    <uiparameters></uiparameters>
+    <attachments>0</attachments>
+    <attachmentsrequired>0</attachmentsrequired>
+    <maxfilesize>10240</maxfilesize>
+    <filenamesregex></filenamesregex>
+    <filenamesexplain></filenamesexplain>
+    <displayfeedback>1</displayfeedback>
+    <giveupallowed>0</giveupallowed>
+    <prototypeextra></prototypeextra>
+    <testcases>
+      <testcase testtype="0" useasexample="1" hiderestiffail="0" mark="1.0000000" >
+      <testcode>
+                <text></text>
+      </testcode>
+      <stdin>
+                <text></text>
+      </stdin>
+      <expected>
+                <text>['a', 'b', 'c', 'd', 'e', 'f', 'g']</text>
+      </expected>
+      <extra>
+                <text></text>
+      </extra>
+      <display>
+                <text>SHOW</text>
+      </display>
+    </testcase>
+    </testcases>
+  </question>
+
+</quiz>
