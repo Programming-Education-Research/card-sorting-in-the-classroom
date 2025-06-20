@@ -1,0 +1,13 @@
+[Attempt(question='Boolean Reasoning',
+         username='foo123',
+         course='CS1',
+         semester='SX',
+         idx=0,
+         attempt={'Always False': [],
+                  'Always True': [],
+                  'Cards': ['0 < x and x < 3', 'x == z or y != z', 'x < 0 and x > 5', 'x == y and x != y', 'x == y or x != y', 'x < 0 or x > 5', '0 < x or x < 3', 'x < y and y < z and z < x'],
+                  'Either True or False': []},
+         grade=0.0,
+         is_admissible=True,
+         is_genuine=False,
+         extra_data={'all_moved': False})]

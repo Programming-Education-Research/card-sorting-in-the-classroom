@@ -132,7 +132,7 @@ def parse_ordering(preload: str) -> bool:
 
 
 def parse_groups(data: str) -> dict[str, list[str]]:
-    data = json.loads(data)
+    data = loads_or_default(data)
     groups = data["cardsort"][0]["groups"]
     return {
         group["title"]: [card["prompt"] for card in group["cards"]]
@@ -167,3 +167,10 @@ def is_admissible(answer, sort):
           and set(c for g in answer.values() for c in g)
           == set(c for g in sort.values() for c in g)
     )
+
+
+def loads_or_default(data):
+    try:
+        return json.loads(data)
+    except json.JSONDecodeError:
+        return {"cardsort": [{"groups": []}]}

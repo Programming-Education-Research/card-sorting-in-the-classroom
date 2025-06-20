@@ -1,3 +1,4 @@
+import logging
 from collections.abc import Mapping, Sequence
 from typing import Final
 
@@ -8,6 +9,9 @@ from questions.cardsort import Cardsort
 from questions.question import Question
 from questions.refute import Refute
 from questions.reverse_trace import ReverseTrace
+
+logger = logging.getLogger("CSITC")
+logger.addHandler(logging.FileHandler("../data/log.txt"))
 
 DB_PATH = "../data/database.db"
 
@@ -40,8 +44,8 @@ question_map: Final[Mapping[
         (ReverseTrace, 3, "Sum Pairs"),
     ],
     ("CS101", "S12025", "Lab17"): [
-        (Cardsort, 3, "Dicts"),
-        (Cardsort, 4, "Dicts With Errors"),
+        (Cardsort, 5, "Dicts"),
+        (Cardsort, 6, "Dicts With Errors"),
     ],
     ("CS130", "S12025", "Lab01"): [
         (Cardsort, 11, "Dicts With Errors"),
@@ -49,7 +53,7 @@ question_map: Final[Mapping[
         (Cardsort, 20, "Functional Equivalence"),
     ],
     ("CS130", "S12025", "Lab03"): [(Cardsort, 5, "Test Case Match")],
-    ("CS130", "S12025", "Lab04"): [(Cardsort, 12, "Identify Exceptions")],
+    ("CS130", "S12025", "Lab04"): [(Cardsort, 14, "Identify Exceptions")],
     ("CS130", "S12025", "Lab14"): [
         (ReverseTrace, 1, "Flip Even Indices"),
         (Refute, 2, "OR before AND"),
