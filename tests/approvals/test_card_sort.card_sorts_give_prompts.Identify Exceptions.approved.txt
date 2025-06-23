@@ -1,0 +1,7 @@
+Put the functions into groups based on the possible exception types they may raise for any given parameters.
+Assume the parameter names indicate the type of the parameter:
+
+nums, numbers, and vals refer to lists of ints
+num_tuple refers to a tuple of ints
+word refers to a string
+n_slices, n_people, and n refer to ints

@@ -1,4 +1,3 @@
-import logging
 from collections.abc import Mapping, Sequence
 from typing import Final
 
@@ -9,9 +8,6 @@ from questions.cardsort import Cardsort
 from questions.question import Question
 from questions.refute import Refute
 from questions.reverse_trace import ReverseTrace
-
-logger = logging.getLogger("CSITC")
-logger.addHandler(logging.FileHandler("../data/log.txt"))
 
 DB_PATH = "../data/database.db"
 

@@ -44,3 +44,7 @@ class Question(SimpleOrm, abc.ABC):
           raw_attempts: list[str],
     ) -> list[Attempt]:
         """Parses and grades raw attempt data from Moodle"""
+
+    @abc.abstractmethod
+    def grade_completion(self, attempt) -> Attempt:
+        ...

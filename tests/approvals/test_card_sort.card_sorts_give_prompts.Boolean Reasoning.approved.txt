@@ -1,0 +1,2 @@
+Just because we can write code that runs doesn't mean it's code that works. When we write Boolean expressions, it is usually because we want them to be True in some cases and False in others — however, it is possible to write Boolean expressions that are always True or always False.
+Assuming the variables x, y, and z can be any integers, sort the cards into groups based on whether they are always True, always False, or can be either True or False.

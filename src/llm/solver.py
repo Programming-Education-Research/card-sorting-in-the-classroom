@@ -1,13 +1,13 @@
 import json
+import os
 from collections.abc import Generator
 from contextlib import contextmanager
 from datetime import datetime
 
-from dotenv import get_key
 from openai import OpenAI
 from ratelimit import limits
 
-__all__ = ("solve", "openai_client")
+__all__ = ("solve", "client")
 
 from llm.completion import Completion
 from llm.types import ResponseFormat
@@ -18,7 +18,7 @@ def full_schema(schema_part) -> ResponseFormat:
     return {
         "type": "json_schema",
         "json_schema": {
-            "name": "card_sort",
+            "name": "question",
             "schema": {
                 "type": "object",
                 "properties": {
@@ -35,8 +35,8 @@ def full_schema(schema_part) -> ResponseFormat:
 
 
 @contextmanager
-def openai_client() -> Generator[OpenAI]:
-    yield OpenAI(api_key=get_key(".env", "OPENAI_API_KEY"))
+def client() -> Generator[OpenAI]:
+    yield OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 
 def instruction(prompt: str) -> str:
@@ -59,8 +59,8 @@ def generate_responses(*, n, client, prompt, schema, question, model):
 def solve(
       client: OpenAI,
       question: Question,
-      n: int,
       *,
+      n: int,
       model: str = "gpt-4o",
 ) -> list[Completion]:
     now = datetime.now()
@@ -72,13 +72,22 @@ def solve(
         question=question.question(),
         model=model,
     )
-    return [
-        Completion(
-            name=question.name,
-            model=model,
-            date=now,
-            explanation=response["explanation"],
-            attempt=question.json_to_attempt(response["answer"]),
+    result = []
+    for response in responses:
+        grade = question.grade_completion(
+            question.json_to_attempt(response["answer"]),
         )
-        for response in responses
-    ]
+        result.append(
+            Completion(
+                name=question.name,
+                model=model,
+                date=now,
+                explanation=response["explanation"],
+                attempt=question.json_to_attempt(response["answer"]),
+                grade=grade.grade,
+                is_admissible=grade.is_admissible,
+                is_genuine=grade.is_genuine,
+                extra_data=grade.extra_data,
+            )
+        )
+    return result

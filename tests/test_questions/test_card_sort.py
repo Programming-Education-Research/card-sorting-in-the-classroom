@@ -336,3 +336,12 @@ def card_sort_parses_corrupted_raw_attempts():
             width=240,
         ),
     )
+
+
+@test
+@pytest.mark.parametrize("question", (BOOLEAN_REASONING, IDENTIFY_EXCEPTIONS))
+def card_sorts_give_prompts(question):
+    verify(
+        question.instructions(),
+        options=NamerFactory.with_parameters(question.name),
+    )

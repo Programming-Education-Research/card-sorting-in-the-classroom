@@ -26,30 +26,53 @@ class Refute(Question):
         )
 
     @override
-    def json_to_attempt(self, json_object: object) -> object:
-        return json_object
+    def json_to_attempt(self, json_object: dict) -> object:
+        return [json_object["given"], json_object["then"], json_object["but"]]
 
     @override
     def json_schema(self) -> dict[str, object]:
         return {
             "type": "object",
             "properties": {
-                "given": {"type": "string", "strict": True, },
-                "then": {"type": "string", "strict": True, },
-                "but": {"type": "string", "strict": True, },
+                "given": {"type": "string"},
+                "then": {"type": "string"},
+                "but": {"type": "string"},
             },
             "required": ["given", "then", "but"],
+            "additionalProperties": False,
             "strict": True,
         }
 
     @override
     def instructions(self) -> str:
-        return self.prompt
+        return (
+              self.prompt
+              + "\n\n"
+              + "Put ONLY the fill values (marked with ???) in the 'given', "
+              + "'then', 'but' answer fields. Do NOT explain your reasoning "
+              + "in this section."
+        )
 
     @override
     def question(self) -> str:
         parts = re.split(r"\{\s*\[\s*\d+\s*\]\s*\}", self.preload)
         return "???".join(parts)
+
+    @override
+    def grade_completion(self, attempt):
+        result = container.runner.run(zip_values(self.test, *attempt))
+        return Attempt(
+            question=self.name,
+            username="LLM",
+            course="BeepBoop",
+            semester="Online",
+            idx=0,
+            attempt=attempt,
+            grade=grade_result(attempt, result),
+            is_admissible=is_admissible(result),
+            is_genuine=attempt != ["", "", ""],
+            extra_data={},
+        )
 
     @override
     def grade_attempts(

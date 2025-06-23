@@ -1,0 +1,3 @@
+The refute question prompt
+
+Put ONLY the fill values (marked with ???) in the 'given', 'then', 'but' answer fields. Do NOT explain your reasoning in this section.

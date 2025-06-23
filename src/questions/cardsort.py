@@ -96,6 +96,23 @@ class Cardsort(Question):
         return json.dumps(groups)
 
     @override
+    def grade_completion(self, attempt):
+        return Attempt(
+            question=self.name,
+            username="LLM",
+            course="BeepBoop",
+            semester="Online",
+            idx=0,
+            attempt=attempt,
+            grade=1 - norm_distance(self.answer, attempt, self.is_ordered),
+            is_admissible=is_admissible(self.answer, attempt),
+            is_genuine=(
+                  norm_distance(self.preload, attempt, self.is_ordered) != 0
+            ),
+            extra_data={"all_moved": len(attempt.get("Cards", set())) == 0},
+        )
+
+    @override
     def grade_attempts(
           self,
           username: str,

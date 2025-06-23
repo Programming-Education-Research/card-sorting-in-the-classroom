@@ -20,7 +20,7 @@ AGGREGATES: Final[Sequence] = [
 @contextmanager
 def connection(
       path: str | PathLike[str],
-      tables: Iterable[SimpleOrm],
+      tables: Iterable[SimpleOrm] = (),
 ) -> Generator[Connection]:
     con = sqlite3.connect(path)
     try:

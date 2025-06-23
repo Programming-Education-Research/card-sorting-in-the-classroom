@@ -35,11 +35,35 @@ class ReverseTrace(Question):
 
     @override
     def instructions(self) -> str:
-        return self.prompt
+        return (
+              self.prompt
+              + "\n\n"
+              + "Put ONLY the fill value (marked with ???) in the answer "
+              + "field. Do NOT explain your reasoning in this section."
+              + "\n\n"
+              + "Expected Answer:\n"
+              + self.expect
+        )
 
     @override
     def question(self) -> str:
         return re.sub(r"\{\s*\[\s*\d+\s*\]\s*\}", "???", self.preload)
+
+    @override
+    def grade_completion(self, attempt):
+        result = container.runner.run(fill_input(self.preload, attempt))
+        return Attempt(
+                question=self.name,
+                username="LLM",
+                course="BeepBoop",
+                semester="Online",
+                idx=0,
+                attempt=attempt,
+                grade=grade_result(result, self.expect),
+                is_admissible=is_admissible(result),
+                is_genuine=attempt != [""],
+                extra_data={},
+            )
 
     @override
     def grade_attempts(
@@ -71,7 +95,6 @@ class ReverseTrace(Question):
 
 def fill_input(preload, value):
     return re.sub(r"\{\[.*?\]\}", value, preload)
-
 
 
 def grade_result(result, expect):

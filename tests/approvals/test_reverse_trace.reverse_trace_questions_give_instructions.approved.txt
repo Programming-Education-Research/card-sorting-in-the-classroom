@@ -1,1 +1,6 @@
 The reverse trace question prompt
+
+Put ONLY the fill value (marked with ???) in the answer field. Do NOT explain your reasoning in this section.
+
+Expected Answer:
+12345
