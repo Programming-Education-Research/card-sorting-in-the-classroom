@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-with database.setup.connection("../data/database.db") as con:
+with database.setup.connection("data/database.db") as con:
     cardsorts = Cardsort.fetch_all(con)
     refutes = Refute.fetch_all(con)
     reverse_traces = ReverseTrace.fetch_all(con)
@@ -23,6 +23,6 @@ with llm.solver.client() as client:
 
 pprint(completions)
 
-with database.setup.connection("../data/database.db", (Completion,)) as con:
+with database.setup.connection("data/database.db", (Completion,)) as con:
     Completion.persist(con, *completions)
     # pprint(Completion.fetch_all(con))

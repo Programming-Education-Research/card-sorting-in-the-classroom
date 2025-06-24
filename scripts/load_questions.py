@@ -29,18 +29,18 @@ name_map: Final[Mapping[str, str]] = {
 
 questions = {}
 
-with open("../data/raw/CS101_questions.xml", "rb") as f:
+with open("data/raw/CS101_questions.xml", "rb") as f:
     for question in moodle.xml.parse(f):
         question = from_raw(question)
         question.name = name_map[question.name]
         questions[question.name] = question
 
-with open("../data/raw/CS130_questions.xml", "rb") as f:
+with open("data/raw/CS130_questions.xml", "rb") as f:
     for question in moodle.xml.parse(f):
         question = from_raw(question)
         question.name = name_map[question.name]
         questions[question.name] = question
 
-with database.setup.connection("../data/database.db", TABLES) as con:
+with database.setup.connection("data/database.db", TABLES) as con:
     for question in questions.values():
         type(question).persist(con, question)

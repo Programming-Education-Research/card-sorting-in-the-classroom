@@ -5,7 +5,7 @@ import database.setup
 import moodle.feedback
 from feedback.feedback import Feedback
 
-DB_PATH = "../data/database.db"
+DB_PATH = "data/database.db"
 
 question_map: Final[Mapping[
     tuple[str, str, str],
@@ -42,7 +42,7 @@ question_map: Final[Mapping[
 for (course, semester, lab), questions in question_map.items():
     for name, rating_num, comment_num in questions:
         file = course + semester[:2] + "_" + lab
-        with open(f"../data/raw/{file}.json", "rb") as f:
+        with open(f"data/raw/{file}.json", "rb") as f:
             raw_feedback = moodle.feedback.load(f, rating_num, comment_num)
         result = [
             Feedback.from_raw(name, username, course, semester, raw_rating)

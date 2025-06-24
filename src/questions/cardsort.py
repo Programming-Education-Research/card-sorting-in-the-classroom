@@ -131,10 +131,8 @@ class Cardsort(Question):
                 attempt=attempt,
                 grade=1 - norm_distance(self.answer, attempt, self.is_ordered),
                 is_admissible=is_admissible(self.answer, attempt),
-                is_genuine=(
-                      norm_distance(self.preload, attempt, self.is_ordered) != 0
-                ),
-                extra_data={"all_moved": len(attempt.get("Cards", set())) == 0},
+                is_genuine=len(attempt.get("Cards", set())) == 0,
+                extra_data={},
             )
             for i, attempt in enumerate(attempts)
         ]

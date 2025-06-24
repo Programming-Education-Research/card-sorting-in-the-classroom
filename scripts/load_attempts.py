@@ -9,7 +9,7 @@ from questions.question import Question
 from questions.refute import Refute
 from questions.reverse_trace import ReverseTrace
 
-DB_PATH = "../data/database.db"
+DB_PATH = "data/database.db"
 
 question_map: Final[Mapping[
     tuple[str, str, str],
@@ -30,15 +30,15 @@ question_map: Final[Mapping[
     ("CS130", "SS2025", "Lab04"): [(Cardsort, 12, "Identify Exceptions")],
     ("CS101", "S12025", "Lab02"): [(Cardsort, 14, "Math Expressions")],
     ("CS101", "S12025", "Lab04"): [(Cardsort, 8, "Boolean Reasoning")],
-    ("CS101", "S12025", "Lab13"): [
-        (ReverseTrace, 2, "Flip Even Indices"),
-        (Refute, 3, "OR before AND"),
-        (Refute, 4, "Index Underflow"),
-    ],
-    ("CS101", "S12025", "Lab15"): [
-        (Refute, 2, ".index On Duplicate"),
-        (ReverseTrace, 3, "Sum Pairs"),
-    ],
+    # ("CS101", "S12025", "Lab13"): [
+    #     (ReverseTrace, 2, "Flip Even Indices"),
+    #     (Refute, 3, "OR before AND"),
+    #     (Refute, 4, "Index Underflow"),
+    # ],
+    # ("CS101", "S12025", "Lab15"): [
+    #     (Refute, 2, ".index On Duplicate"),
+    #     (ReverseTrace, 3, "Sum Pairs"),
+    # ],
     ("CS101", "S12025", "Lab17"): [
         (Cardsort, 5, "Dicts"),
         (Cardsort, 6, "Dicts With Errors"),
@@ -50,21 +50,21 @@ question_map: Final[Mapping[
     ],
     ("CS130", "S12025", "Lab03"): [(Cardsort, 5, "Test Case Match")],
     ("CS130", "S12025", "Lab04"): [(Cardsort, 14, "Identify Exceptions")],
-    ("CS130", "S12025", "Lab14"): [
-        (ReverseTrace, 1, "Flip Even Indices"),
-        (Refute, 2, "OR before AND"),
-        (Refute, 3, "Index Underflow"),
-    ],
-    ("CS130", "S12025", "Lab17"): [
-        (Refute, 1, ".index On Duplicate"),
-        (ReverseTrace, 2, "Sum Pairs"),
-    ],
+    # ("CS130", "S12025", "Lab14"): [
+    #     (ReverseTrace, 1, "Flip Even Indices"),
+    #     (Refute, 2, "OR before AND"),
+    #     (Refute, 3, "Index Underflow"),
+    # ],
+    # ("CS130", "S12025", "Lab17"): [
+    #     (Refute, 1, ".index On Duplicate"),
+    #     (ReverseTrace, 2, "Sum Pairs"),
+    # ],
 }
 
 
 def process_one_question(course, semester, lab, q_type, number, name):
     file = course + semester[:2] + "_" + lab
-    with open(f"../data/raw/{file}.json", "rb") as f:
+    with open(f"data/raw/{file}.json", "rb") as f:
         responses = moodle.responses.load(f)
     with database.setup.connection(DB_PATH, (Attempt,)) as con:
         question = q_type.fetch(con, name=name)
