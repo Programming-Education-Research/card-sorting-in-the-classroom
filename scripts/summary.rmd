@@ -1,0 +1,303 @@
+---
+title: "Summary"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+knit: (function(inputFile, encoding) { 
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_dir=file.path(getwd(), 'data/reports')) })
+---
+
+```{r config, include=FALSE}
+knitr::opts_knit$set(root.dir = file.path(getwd(), '..'))
+options(digits = 4)
+knitr::opts_chunk$set(comment = NA)
+```
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggbeeswarm)
+library(scales)
+library(DBI)
+
+source("src/stats_utils/utils.R")
+```
+
+```{R load_enrolments, echo=FALSE}
+grades <- (
+    fetch("SELECT username, course, semester, grade, sat_exam from Grade")
+    |> mutate(
+         course = relabel_courses(course),
+         sat_exam = relabel_exam(sat_exam),
+         semester = relabel_semester(semester),
+         grade = grade * 100
+       )
+)
+```
+
+## Summary
+
+The study was divided over two semesters and two courses. The enrolments for
+each course and semester are shown below.
+
+```{R plot_enrolments, echo=FALSE, fig.height=3, fig.width=5.7}
+(
+    ggplot(grades, aes(y = fct_rev(course), fill = fct_rev(sat_exam)))
+    + geom_bar(color = "black")
+    + labs(
+        title = "Students enrolled by Semester",
+        x = "Number of Students (Stacked)", y = "",
+        fill = "Sat Exam?"
+      )
+    + facet_wrap(vars(semester), ncol = 1, scales = "free")
+    + custom_theme()
+    + scale_fill_grey(start = 0.8, end = 0.4)
+    + scale_x_continuous(breaks = breaks_pretty())
+)
+```
+
+```{r tabulate_enrolments, echo=FALSE}
+t(
+  grades
+  |> group_by(course, semester)
+  |> summarise(
+       n = n_distinct(username),
+       `sat exam` = sum(sat_exam == "Sat Exam"),
+       `sat exam%` = `sat exam` / n * 100,
+       `did not sit exam` = sum(sat_exam == "Did Not Sit"),
+       `did not sit exam%` = `did not sit exam` / n * 100,
+       .groups = "drop"
+     )
+)
+```
+
+It is common for students to withdraw/"drop out" before the end of a course;
+however, data for who has withdrawn is not available. As a proxy for "still
+enrolled students", this study considers only those students who sat the final
+exam for each course. This will exclude some students who could not sit the
+final exams for legitimate reasons, but from the above tables, this excludes
+only about 6% of the data.
+
+```{r filter_enrolments}
+grades <- grades |> filter(sat_exam == "Sat Exam")
+```
+
+The overall grades for students who completed each course are below. This is the
+unweighted average for students test and exam scores—ignoring missing test
+scores.
+
+```{R plot_grades, echo=FALSE}
+summary <- (
+  grades
+  |> group_by(course , semester)
+  |> summarise(
+       mean = mean(grade),
+       median = median(grade),
+       n = n(),
+       .groups = "drop"
+     )
+)
+
+(
+  ggplot(grades, aes(x = grade))
+  + geom_density(fill = "grey90", alpha = 0.8, linewidth = 0.7)
+  + labs(
+      title = "Density of Student Grades by Course and Semester",
+      x = "Grade (/100)", y = "Density"
+    )
+  + geom_vline(
+      aes(xintercept = mean, linetype = "mean"),
+      data = summary, 
+      key_glyph = "path"
+    )
+  + geom_vline(
+      aes(xintercept = median, linetype = "median"),
+      data = summary,
+      key_glyph = "path"
+    )
+  + geom_text(
+      aes(label = paste0("n=", n), x = -Inf, y = Inf),
+      data = summary,
+      hjust = -0.2, vjust = 2,
+      fontface = "bold"
+    )
+  + facet_grid(semester ~ course)
+  + custom_theme(panel.spacing = unit(1, "lines"))
+  + scale_x_continuous(limits = c(0, 100), expand = c(0, 0))
+  + scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+  + scale_linetype_manual(
+      name = "Summary", 
+      values = c(mean = "solid", median = "dashed")
+    )
+)
+```
+
+```{R tabulate_grades, echo=FALSE}
+t(
+  grades
+  |> group_by(course, semester)
+  |> summarise(
+       n = n_distinct(username),
+       `mean grade` = mean(grade),
+       `median grade` = median(grade),
+       `stddev` = sd(grade),
+       .groups = "drop"
+     )
+)
+```
+
+```{R load_cardsorts, echo=FALSE}
+data <- (
+  fetch("
+      SELECT Attempt.question,
+             Attempt.username,
+             Attempt.course,
+             Attempt.semester,
+             Attempt.idx,
+             Attempt.grade as mark,
+             Attempt.is_admissible,
+             Attempt.is_genuine,
+             Grade.grade as grade
+      FROM Attempt
+               JOIN Cardsort ON Attempt.question = Cardsort.name
+               LEFT JOIN Grade USING (username, course, semester)
+      WHERE Grade.sat_exam = 1
+  ")
+  |> mutate(
+         course = relabel_courses(course),
+         semester = relabel_semester(semester),
+         question = relabel_questions(question),
+         grade = grade * 100,
+         mark = mark * 100
+       )
+)
+
+num_attempts <- (
+  data
+  |> group_by(question, username, course, semester)
+  |> summarise(
+       attempts = max(idx) + 1,
+       is_genuine = any(idx == 0 & is_genuine == 1),
+       .groups = "drop"
+     )
+  |> group_by(question, course, semester)
+  |> mutate(is_outlier = is_outlier(attempts))
+  |> left_join(grades, by = join_by(course, semester, username))
+)
+```
+
+```{R echo=FALSE, fig.width=7.5, message=FALSE}
+(
+  ggplot(num_attempts, aes(x = question, y = attempts))
+  + geom_boxplot(notch = TRUE)
+  + geom_quasirandom(width = 0.15, size = 0.3)
+  + labs(
+      title = "Raw Number of Attempts Per Question",
+      x = "Question", y = "Number of Attempts"
+    )
+  + facet_grid(semester ~ course, scales = "free")
+  + custom_theme(axis.text = element_text(size = 8))
+  + scale_x_discrete(labels = label_wrap(width = 15))
+)
+```
+
+A few observations after looking at the data:
+
+-   Outliers: Some students had an unusually large number of attempts. It is
+    assumed these students are attempting to brute-force solutions
+-   Strategy: Some students did not move all cards before clicking "check". This
+    might indicate a form of brute-forcing where students continually check
+    questions before constructing a full solution.
+
+Below, this data is tabulated.
+    
+```{r echo=FALSE}
+t(
+  num_attempts
+  |> summarise(
+       n = n(),
+       `genuine attempt` = sum(!is_outlier & is_genuine),
+       `genuine attempt%` = `genuine attempt` / n * 100,
+       `not genuine` = sum(is_outlier | !is_genuine),
+       `not genuine%` = `not genuine` / n * 100,
+       `outlier only` = sum(is_outlier & is_genuine),
+       `didn't move all only` = sum(!is_outlier & !is_genuine),
+       `Both an outler and didn't move all` = sum(is_outlier & !is_genuine),
+       .groups = "drop"
+     )
+  |> arrange(course, semester, question)
+)
+```
+
+It is assumed that students who do not give genuine attempts to questions do so as they are weak students.
+
+```{R echo=FALSE, fig.width=9, message=FALSE}
+(
+  ggplot(num_attempts, aes(x = question, y = grade, fill = is_outlier))
+  + geom_boxplot(notch = TRUE)
+  + geom_quasirandom(width = 0.12, size = 0.2, dodge.width = 0.75)
+  + labs(
+      title = "Grades By Question and Outlier Status",
+      x = "Question", y = "Grade (/100)",
+      fill = "Is Outlier?"
+    )
+  + facet_grid(semester ~ course, scales = "free")
+  + custom_theme(axis.text = element_text(size = 8))
+  + scale_x_discrete(labels = label_wrap(width = 15))
+  + scale_fill_grey(start = 1, end = 0.6)
+)
+```
+
+Outliers generally seem to be the weakest students. For further analysis, these
+students are removed as it is assumed that to achieve a number of attempts so
+extreme they are not genuinely attempting the problm.
+
+```{R}
+num_attempts <- num_attempts |> filter(!is_outlier)
+```
+
+Next, a plot showing the numbers of attempts for students who did/did not move
+all cards in their first attempt is shown.
+
+```{R echo=FALSE, fig.width=9, message=FALSE}
+(
+  ggplot(num_attempts, aes(x = question, y = grade, fill = is_genuine))
+  + geom_boxplot(notch = TRUE)
+  + geom_quasirandom(width = 0.12, size = 0.2, dodge.width = 0.75)
+  + labs(
+      title = "Grade By Question and Strategy",
+      x = "Question", y = "Grade",
+      fill = "Moved all Cards?"
+    )
+  + facet_grid(semester ~ course, scales = "free")
+  + custom_theme(axis.text = element_text(size = 8))
+  + scale_x_discrete(labels = label_wrap(width = 15))
+  + scale_y_continuous(limits = c(0, 100))
+  + scale_fill_grey(start = 1, end = 0.6)
+)
+```
+
+Students not giving genuine attempts also seem to be relatively weak. They are removed.
+
+```{r}
+num_attempts <- num_attempts |> filter(is_genuine)
+```
+
+Now, the number of attempts per question looks like:
+
+```{R echo=FALSE, fig.width=7.5, message=FALSE}
+(
+  ggplot(num_attempts, aes(x = question, y = attempts))
+  + geom_boxplot(notch = TRUE)
+  + geom_quasirandom(width = 0.15, size = 0.3)
+  + labs(
+      title = "Number of Attempts Per Question for Genuine Attempts",
+      x = "Question", y = "Number of Attempts"
+    )
+  + facet_grid(semester ~ course, scales = "free")
+  + custom_theme(axis.text = element_text(size = 8))
+  + scale_x_discrete(labels = label_wrap(width = 15))
+)
+```
